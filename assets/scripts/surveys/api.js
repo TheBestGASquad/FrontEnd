@@ -45,10 +45,10 @@ const index = function () {
 const show = function (id) {
   return $.ajax({
     url: config.apiOrigin + '/surveys/' + id,
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
+    method: 'GET'
+    // headers: {
+    //   Authorization: 'Token token=' + store.user.token
+    // }
   })
 }
 
