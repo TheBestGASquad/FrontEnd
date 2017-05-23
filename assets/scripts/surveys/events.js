@@ -20,14 +20,6 @@ const onIndexOfSurveys = function (event) {
     .catch(ui.indexOfSurveysFailure)
 }
 
-const onShowOneSurvey = function (event) {
-  event.preventDefault()
-  const data = getFormFields(this)
-  api.showOneSurvey(data)
-    .then(ui.showOneSurveySuccess)
-    .catch(ui.showOneSurveyFailure)
-}
-
 const onDestroy = function (event) {
   event.preventDefault()
   const surveyId = $(this).attr('surveyId')

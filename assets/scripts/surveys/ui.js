@@ -35,27 +35,11 @@ const indexOfSurveysSuccess = (data) => {
   }
   store.userSurveys = data.surveys
   refreshTable()
-
 }
 
 const indexOfSurveysFailure = (surveyId) => {
   store.userSurveys = surveyId.surveys
   console.log('failed to index')
-}
-
-const showOneSurveySuccess = (data) => {
-  console.log('success')
-  console.log(data)
-  if (data.surveys.length === 0) {
-    userMessage('You have no surveys.')
-  }
-  store.userSurveys = data.surveys
-  refreshTable()
-}
-
-const showFailure = () => {
-  console.log('failed to show')
-  store.userSurveys = surveyId.surveys
 }
 
 const destroySuccess = () => {
@@ -72,7 +56,6 @@ const destroyFailure = (data) => {
 
 const updateSuccess = (surveyId) => {
   store.userSurveys = surveyId.surveys
-
   console.log(surveyId)
   console.log('successful update')
   refreshTable()
@@ -90,7 +73,6 @@ module.exports = {
   createFailure,
   indexOfSurveysSuccess,
   indexOfSurveysFailure,
-  showFailure,
   destroySuccess,
   destroyFailure,
   updateSuccess,

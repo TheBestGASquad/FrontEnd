@@ -37,7 +37,6 @@ const destroy = function (surveyId) {
 }
 
 const update = (surveyId, data) => {
-
   return $.ajax({
     url: config.apiOrigin + '/surveys/' + surveyId, // now its a 400 error
     method: 'PATCH',

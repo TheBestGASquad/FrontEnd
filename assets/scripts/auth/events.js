@@ -24,11 +24,17 @@ const onRevealSignIn = function () {
 const onSignUp = function (event) {
   console.log('eventssignup')
   const data = getFormFields(this)
-  event.preventDefault()
   api.signUp(data)
-    .then(ui.signUpSuccess)
-    .catch(ui.signUpFailure)
+  .then(ui.signUpSuccess)
+  .catch(ui.signUpFailure)
 }
+
+// const onIndex = function (event) {
+//   event.preventDefault()
+//   api.signUp(data)
+//     .then(ui.signUpSuccess)
+//     .catch(ui.signUpFailure)
+// }
 
 const onSignIn = function (event) {
   const data = getFormFields(this)
