@@ -28,12 +28,11 @@ const onIndexOfSurveys = function (event) {
     .catch(ui.indexOfSurveysFailure)
 }
 
-const onShowOneSurvey = function (event) {
+const onShowAuthUserSurveys = function (event) {
   event.preventDefault()
-  const data = getFormFields(this)
-  api.showOneSurvey(data)
-    .then(ui.showOneSurveySuccess)
-    .catch(ui.showOneSurveyFailure)
+  api.showAuthUserSurveys()
+  .then(ui.showAuthUserSurveysSuccess)
+  .catch(ui.showAuthUserSurveysFailure)
 }
 
 const onDestroy = function (event) {
@@ -62,7 +61,7 @@ const addHandlers = () => {
   $('#create-survey').on('submit', onCreateSurvey)
   $('#create-question').on('submit', onCreateQuestion)
   $('#indexOfSurveys').on('click', onIndexOfSurveys)
-  $('#getUserSurveys').on('click', onShowOneSurvey)
+  $('#show-auth-user-surveys').on('submit', onShowAuthUserSurveys)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#content').on('click', '.delete-survey-button', onDestroy)
   // $('#content').on('click', '.show-questions-button', onGetQuestions)
