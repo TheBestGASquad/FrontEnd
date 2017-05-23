@@ -45,6 +45,24 @@ const indexFailure = (error) => {
   // burndown
 }
 
+const userIndexSuccess = (response) => {
+  console.log('user\'s surveys returned')
+  console.log(response)
+}
+
+const userIndexFailure = (error) => {
+  console.log('failed to return user\'s surveys')
+}
+
+const surveyQuestionSuccess = (response) => {
+  console.log('survey questions returned')
+  console.log(response)
+}
+
+const surveyQuestionFailure = (error) => {
+  console.log('failed to return questions')
+}
+
 const showSuccess = (response) => {
   // burndown
   console.log('success')
@@ -99,6 +117,10 @@ module.exports = {
   createQuestionFailure,
   indexSuccess,
   indexFailure,
+  userIndexSuccess,
+  userIndexFailure,
+  surveyQuestionSuccess,
+  surveyQuestionFailure,
   showSuccess,
   showFailure,
   destroySuccess,

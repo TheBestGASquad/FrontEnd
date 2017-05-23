@@ -29,6 +29,22 @@ const onIndex = function (event) {
     .catch(ui.indexFailure)
 }
 
+const onUserIndex = function (event) {
+  event.preventDefault()
+  api.userIndex()
+    .then(ui.userIndexSuccess)
+    .catch(ui.userIndexFailure)
+}
+
+const onSurveyQuestions = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  console.log(data.survey.id)
+  api.surveyQuestions(data.survey.id)
+    .then(ui.surveyQuestionSuccess)
+    .catch(ui.surveyQuestionFailure)
+}
+
 const onShow = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
@@ -69,10 +85,12 @@ const addHandlers = () => {
   $('.create-survey').on('submit', onCreateSurvey)
   $('.create-question').on('submit', onCreateQuestion)
   $('.index').on('click', onIndex)
+  $('.user-index').on('click', onUserIndex)
   $('.show').on('submit', onShow)
   $('.destroy').on('submit', onDestroy)
   $('.update').on('submit', onUpdate)
   $('.answer-question').on('submit', onAnswerQuestion)
+  $('.survey-questions').on('submit', onSurveyQuestions)
 }
 
 module.exports = {

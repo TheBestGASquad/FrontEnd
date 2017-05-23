@@ -74,8 +74,10 @@
   </div>
 
   <div class="core">
+    <h3>Accessible to authenticated users</h3>
 
     <form class="create-survey">
+      <h4>Create a new Survey</h4>
       <fieldset>
         <input type="text" name="survey[title]" placeholder="Create survey">
         <input type="submit" name="submit" value="Submit survey">
@@ -83,23 +85,20 @@
     </form>
 
     <form class="create-question">
-      <h5>This will break if you havent just created a survey</h5>
+      <h4>Creates a question</h4>
+      <h5>Warning: this will break if you havent just created a survey</h5>
       <fieldset>
         <input type="text" name="prompt" placeholder="Create question">
         <input type="submit" name="submit" value="Submit question">
       </fieldset>
     </form>
 
-    <button class="index" type="button">Index of Surveys</button>
-
-    <form class="show">
-      <fieldset>
-        <input type="string" name="survey[id]" placeholder="Find survey by ID">
-        <input type="submit" name="submit" value="Submit ID">
-      </fieldset>
-    </form>
+    <h4>Get all surveys linked to current user</h4>
+    <button class="user-index" type="button">Index of Current User's surveys</button>
 
     <form class="destroy">
+      <h4>Delete a Survey</h4>
+      <h5>Warning: this will break if you try to delete a survey which does not belong to the current user</h5>
       <fieldset>
         <input type="string" name="survey[id]" placeholder="Delete survey by ID">
         <input type="submit" name="submit" value="Submit ID">
@@ -107,6 +106,8 @@
     </form>
 
     <form class="update">
+      <h4>Update a Survey</h4>
+      <h5>Warning: this will break if you try to update a survey which does not belong to the current user</h5>
       <fieldset>
         <input type="string" name="survey[id]" placeholder="Select ID">
         <input type="text" name="survey[title]" placeholder="Change Title">
@@ -116,20 +117,30 @@
 
   </div>
 
-  <h5>Accessible to non-authenticated users</h5>
+  <h3>Accessible to non-authenticated users</h3>
 
+  <h4>Get all surveys</h4>
   <button class="index" type="button">Index of Surveys</button>
 
   <form class="show">
     <fieldset>
+      <h4>Get a survey by its ID</h4>
       <input type="string" name="survey[id]" placeholder="Find survey by ID">
+      <input type="submit" name="submit" value="Submit ID">
+    </fieldset>
+  </form>
+
+  <form class="survey-questions">
+    <h4>Get all questions from a single survey by survey ID</h4>
+    <fieldset>
+      <input type="string" name="survey[id]" placeholder="Get all questions from a survey">
       <input type="submit" name="submit" value="Submit ID">
     </fieldset>
   </form>
 
   <form class="answer-question">
     <fieldset>
-      <h5>This will break if you havent just created a survey</h5>
+      <h4>Answer a question by its ID</h4>
       <input type="string" name="question[id]" placeholder="Select ID">
       <input type="number" name="question[results]" placeholder="1 for yes, anything else for no">
       <input type="submit" name="submit" value="Answer question">

@@ -35,9 +35,36 @@ const createQuestion = (data) => {
 const index = function () {
   return $.ajax({
     url: config.apiOrigin + '/surveys/',
+    method: 'GET'
+    // headers: {
+    //   Authorization: 'Token token=' + store.user.token
+    // }
+  })
+}
+
+const userIndex = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/user-surveys',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'survey': {
+        'id': store.user._id
+      }
+    }
+  })
+}
+
+const surveyQuestions = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/questions',
+    method: 'GET',
+    data: {
+      'question': {
+        '_survey': id
+      }
     }
   })
 }
@@ -93,6 +120,8 @@ module.exports = {
   update,
   answerQuestion,
   index,
+  userIndex,
+  surveyQuestions,
   show,
   destroy
 }
