@@ -56,8 +56,13 @@ const onUpdate = function (event) {
 
 const onAnswerQuestion = function (event) {
   event.preventDefault()
-  const data = getFormFields(event.target)
+  let data = getFormFields(event.target)
+  const id = data.question.id
+  data = data.question.results === '1'
   console.log(data)
+  api.answerQuestion(data, id)
+    .then(ui.answerSuccess)
+    .catch(ui.answerFailure)
 }
 
 const addHandlers = () => {

@@ -90,16 +90,6 @@
       </fieldset>
     </form>
 
-
-    <form class="answer-question">
-      <fieldset>
-        <h5>This will break if you havent just created a survey</h5>
-        <input type="string" name="question[id]" placeholder="Select ID">
-        <input type="string" name="question[answer]" placeholder="Select ID">
-        <input type="submit" name="submit" value="Answer question">
-      </fieldset>
-    </form>
-
      <button class="index" type="button">Index of Surveys</button>
 
     <form class="show">
@@ -125,6 +115,15 @@
     </form>
 
   </div>
+
+  <form class="answer-question">
+    <fieldset>
+      <h5>This will break if you havent just created a survey</h5>
+      <input type="string" name="question[id]" placeholder="Select ID">
+      <input type="number" name="question[results]" placeholder="1 for yes, anything else for no">
+      <input type="submit" name="submit" value="Answer question">
+    </fieldset>
+  </form>
 
   <footer class="footer">
     <div class="container">

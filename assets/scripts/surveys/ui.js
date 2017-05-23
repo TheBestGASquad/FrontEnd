@@ -77,10 +77,19 @@ const updateSuccess = (response) => {
   // burndown
 }
 
+const answerSuccess = (response) => {
+  console.log(response)
+  console.log('answer logged')
+}
+
 const updateFailure = (error) => {
   // burndown
   console.log('update failed')
   // burndown
+}
+
+const answerFailure = (error) => {
+  console.log('failed to log answer')
 }
 
 module.exports = {

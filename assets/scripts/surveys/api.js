@@ -64,7 +64,7 @@ const destroy = function (id) {
 
 const update = (data, id) => {
   return $.ajax({
-    url: config.apiOrigin + '/surveys/' + id, // now its a 400 error
+    url: config.apiOrigin + '/surveys/' + id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -73,10 +73,25 @@ const update = (data, id) => {
   })
 }
 
+const answerQuestion = (data, id) => {
+  return $.ajax({
+    url: config.apiOrigin + '/questions/' + id,
+    method: 'PATCH',
+    data: {
+      'question': {
+        'results': [{
+          'response': data
+        }]
+      }
+    }
+  })
+}
+
 module.exports = {
   createSurvey,
   createQuestion,
   update,
+  answerQuestion,
   index,
   show,
   destroy
