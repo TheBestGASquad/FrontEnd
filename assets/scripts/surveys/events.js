@@ -39,7 +39,7 @@ const onUserIndex = function (event) {
 const onSurveyQuestions = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data.survey.id)
+  // console.log(data.survey.id)
   api.surveyQuestions(data.survey.id)
     .then(ui.surveyQuestionSuccess)
     .catch(ui.surveyQuestionFailure)

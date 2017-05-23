@@ -58,6 +58,7 @@ const userIndex = function () {
 }
 
 const surveyQuestions = function (id) {
+  console.log(id)
   return $.ajax({
     url: config.apiOrigin + '/questions',
     method: 'GET',
