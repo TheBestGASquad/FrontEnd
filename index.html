@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-3<html>
+<html>
 
 <head>
   <title>Group project</title>
@@ -43,6 +43,13 @@
           <button id="indexOfSurveys" class="btn btn-default navbar-btn right">Show All Surveys</button>
           <button id="indexOfUserSurveys" class="btn btn-default navbar-btn right">Show My Surveys</button>
         </div>
+        <div class="navbar-header" style="float: right;">
+          <form id='show-auth-user-surveys'>
+            <fieldset>
+          <input type="submit" name="submit" class="btn btn-default navbar-btn right" value="Show User Surveys">
+        </fieldset>
+        </form>
+        </div>
       </div>
 
     </div>
@@ -65,10 +72,33 @@
       <input class="submit" type="submit" name="submit" value="Sign in!">
     </form>
 
+
     <form id="create-survey">
       <fieldset>
-        <input class="form-control" onFocus="this.select()" type="text" name="survey[title]" placeholder="Survey Title">
-        <input class="submit" type="submit" name="submit" value="Create Survey">
+        <input class="form-control" onFocus="this.select()" type="text" name="survey[title]" placeholder="Create survey">
+        <input class="submit" type="submit" name="submit" value="Create Survey!">
+      </fieldset>
+    </form>
+
+    <form id="create-question">
+     <fieldset>
+       <input type="text" name="prompt" placeholder="Create question">
+       <input type="submit" name="submit" value="Submit question">
+     </fieldset>
+   </form>
+
+    <form class="destroy">
+      <fieldset>
+        <input type="string" name="survey[id]" placeholder="Delete survey by ID">
+        <input type="submit" name="submit" value="Submit ID">
+      </fieldset>
+    </form>
+
+    <form class="update">
+      <fieldset>
+        <input type="string" name="survey[id]" placeholder="Select ID">
+        <input type="text" name="survey[title]" placeholder="Change Title">
+        <input type="submit" name="submit" value="Update Movie">
       </fieldset>
     </form>
   </div>

@@ -5,6 +5,7 @@
 
   <thead>
     <tr>
+<<<<<<< HEAD
       <th>Survey Title</th>
     </tr>
   </thead>
@@ -20,5 +21,24 @@
         <button surveyId="{{survey.id}}" type="submit" task="text" class="btn btn-info update-survey-button">Edit</button>
       </form>
       </tr>
+=======
+      <th>Survey #</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  {{#each surveys as |survey|}}
+    <tr>
+      <td>{{survey.id}}</td>
+      <td>{{survey.title}}</td>
+      <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger delete-survey-button">Delete</button></td>
+      <td>
+        <form class="update-survey-by-id-form" surveyId="{{survey.id}}">
+          <input type="text" name="survey[title]">
+          <input type="hidden" name="id" value="{{survey.id}}">
+          <button surveyId="{{survey.id}}" type="submit" class="btn btn-info update-survey-button">Edit</button>
+        </form>
+    </tr>
+
+>>>>>>>  updating handlebars and html for get user surveys
   {{/each}}
 </table>
