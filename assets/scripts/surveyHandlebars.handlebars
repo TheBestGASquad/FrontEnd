@@ -7,17 +7,17 @@
     <tr>
       <th>Survey #</th>
 
-      <th>Prompt</th>
+      <th>Title</th>
     </tr>
   </thead>
   {{#each surveys as |survey|}}
     <tr>
       <td>{{survey.id}}</td>
-      <td>{{survey.prompt}}</td>
+      <td>{{survey.title}}</td>
       <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger delete-survey-button">Delete</button></td>
       <td>
         <form class="update-survey-by-id-form" surveyId="{{survey.id}}">
-          <input type="text" name="survey[prompt]">
+          <input type="text" name="survey[title]">
           <input type="hidden" name="id" value="{{survey.id}}">
           <button surveyId="{{survey.id}}" type="submit" class="btn btn-success update-survey-button">Edit</button>
         </form>

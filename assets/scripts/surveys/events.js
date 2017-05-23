@@ -52,7 +52,7 @@ const onRevealAddQuestion = function (event) {
 const addHandlers = () => {
   $('#create-survey').on('submit', onCreateSurvey)
   $('#show-surveys').on('click', onIndexOfSurveys)
-  $('#show-auth-user-surveys').on('click', onShowAuthUserSurveys)
+  $('#show-auth-user-surveys').on('submit', onShowAuthUserSurveys)
   $('#content').on('click', '.delete-survey-button', onDestroy)
   $('#content').on('submit', '.update-survey-by-id-form', onUpdate)
   $('#create-survey-nav').on('click', onRevealAddQuestion)

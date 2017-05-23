@@ -44,7 +44,10 @@ const indexOfSurveysFailure = (surveyId) => {
 
 const showAuthUserSurveysSuccess = (data) => {
   console.log('show user survey fired')
-  refreshTable()
+  const showSurveyHtml = showSurveyHB({ surveys: store.userSurveys })
+  console.log('refresh')
+  $('#content').empty()
+  $('#content').append(showSurveyHtml)
 }
 
 const showAuthUserSurveysFailure = (data) => {
