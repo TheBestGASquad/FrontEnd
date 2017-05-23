@@ -42,11 +42,20 @@ const indexOfSurveysFailure = (surveyId) => {
   console.log('failed to index')
 }
 
+const showAuthUserSurveysSuccess = (data) => {
+  console.log('show user survey fired')
+  refreshTable()
+}
+
+const showAuthUserSurveysFailure = (data) => {
+  console.log('failed to show user surveys')
+}
+
 const destroySuccess = () => {
   refreshTable()
-  api.indexOfSurveys()
-    .then(indexOfSurveysSuccess)
-    .catch(indexOfSurveysFailure)
+  api.showAuthUserSurveys()
+    .then(showAuthUserSurveysSuccess)
+    .catch(showAuthUserSurveysFailure)
   console.log('successful deletion')
 }
 
@@ -77,5 +86,7 @@ module.exports = {
   destroyFailure,
   updateSuccess,
   updateFailure,
-  refreshTable
+  refreshTable,
+  showAuthUserSurveysFailure,
+  showAuthUserSurveysSuccess
 }
