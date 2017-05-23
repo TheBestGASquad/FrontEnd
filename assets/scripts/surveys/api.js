@@ -29,7 +29,7 @@ const indexOfSurveys = function (data) {
 const showAuthUserSurveys = (data) => {
   console.log('success')
   return $.ajax({
-    url: config.apiOrigin + '/user-surveys/',
+    url: config.apiOrigin + '/user-surveys',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
