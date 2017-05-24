@@ -7,10 +7,12 @@ const signUpSuccess = (data) => {
   console.log('sign-up ', data)
 
   document.getElementById('sign-up').reset()
+  $('.alert').text('Successful Sign up')
 }
 
 const signUpFailure = () => {
   console.log('signUpFailure')
+  $('.alert').text('Failed Sign up')
 }
 
 const signInSuccess = (data) => {
@@ -39,16 +41,19 @@ const signInSuccess = (data) => {
 
 const signInFailure = (data) => {
   console.log('signInFailure ui')
+  $('.alert').text('Failed to sign')
   // $('div.error-handling').text('Sign in error')
 }
 
 const signOutSuccess = (data) => {
   console.log('signOutSuccess')
+  $('.alert').text('Signed out')
 }
 
 const signOutFailure = (data) => {
   console.log('signOutFailure')
   document.querySelector('.core').style.visibility = 'hidden'
+  $('.alert').text('Failure to sign out')
 }
 module.exports = {
   signUpSuccess,

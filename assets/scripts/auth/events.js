@@ -22,9 +22,9 @@ const onRevealSignIn = function () {
 }
 
 const onSignUp = function (event) {
+  event.preventDefault()
   console.log('eventssignup')
   const data = getFormFields(this)
-  event.preventDefault()
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)

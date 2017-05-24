@@ -83,6 +83,7 @@ const userIndex = function () {
 // left from past rebase
 // const destroy = function (surveyId) {
 
+// returns every question with a survey ID that matches the passed argument
 const surveyQuestions = function (id) {
   return $.ajax({
     url: config.apiOrigin + '/questions',
