@@ -83,18 +83,6 @@ const surveyQuestions = function (id) {
   })
 }
 
-const surveyQuestions = function (id) {
-  return $.ajax({
-    url: config.apiOrigin + '/questions',
-    method: 'GET',
-    data: {
-      'question': {
-        '_survey': id
-      }
-    }
-  })
-}
-
 const show = function (id) {
   return $.ajax({
     url: config.apiOrigin + '/surveys/' + id,
@@ -139,6 +127,6 @@ module.exports = {
   userIndex,
   surveyQuestions,
   show,
-  destroy,
+  // destroy,
   showAuthUserSurveys
 }
