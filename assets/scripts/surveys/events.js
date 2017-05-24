@@ -56,7 +56,7 @@ const onUpdate = function (event) {
     .catch(ui.updateFailure)
 }
 
-const onSurveyQuestions = function (event) {
+const takeSurvey = function (event) {
   event.preventDefault()
   const surveyId = $(this).attr('surveyId')
   api.surveyQuestions(surveyId)
@@ -80,7 +80,7 @@ const addHandlers = () => {
   // $('#handlebar-target').on('submit', '.update-survey-by-id-form', onUpdate)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#handlebar-target').on('submit', '#rename-auth-survey-by-id-button', onUpdate)
-  $('#handlebar-target').on('click', '.take-survey', onSurveyQuestions)
+  $('#handlebar-target').on('click', '.take-survey', takeSurvey)
 }
 
 module.exports = {

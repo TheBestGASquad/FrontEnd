@@ -5,7 +5,7 @@ const api = require('./api.js')
 
 const unauthUserSurveyHB = require('../templates/surveyHandlebars.handlebars')
 const authUserSurveyHB = require('../templates/authUserHandlebars.handlebars')
-// const answerableSurveyHB = require('../templates/answerableSurvey.handlebars')
+const answerableSurveyHB = require('../templates/answerableSurvey.handlebars')
 const editableSurveyHB = require('../templates/editableSurveys.handlebars')
 
 // const userMessage = (txt) => {
@@ -59,6 +59,7 @@ const createQuestionSuccess = (response) => {
 }
 
 const indexOfSurveysSuccess = (data) => {
+  console.log('userSurveys')
   console.log(data)
   if (data.surveys.length === 0) {
     $('#user-message').text('There are no surveys to take.')
@@ -76,8 +77,8 @@ const showAuthUserSurveysSuccess = (data) => {
   // if (data.survey.length === 0) {
   //   $('#user-message').text('You have no surveys created.')
   // }
-  const answerableSurveyHtml = authUserSurveyHB({ surveys: data.survey })
-  $('#handlebar-target').html(answerableSurveyHtml)
+  const userSurveys = authUserSurveyHB({ surveys: data.survey })
+  $('#handlebar-target').html(userSurveys)
 }
 
 const showAuthUserSurveysFailure = (data) => {
@@ -109,8 +110,10 @@ const updateFailure = (data) => {
 }
 
 const surveyQuestionSuccess = (data) => {
+  console.log('hits questions')
   console.log(data)
-  $('.alert').text('successful return')
+  const answerableSurvey = answerableSurveyHB({ questions: data.question })
+  $('#handlebar-target').html(answerableSurvey)
 }
 
 const surveyQuestionFailure = (data) => {
