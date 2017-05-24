@@ -40,6 +40,18 @@ body > .container {
   display: none;
 }
 
+#create-survey-nav {
+  display: none;
+}
+
+#indexOfUserSurveys {
+  display: none;
+}
+
+a.dropdown-toggle {
+  visibility: hidden;
+}
+
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
