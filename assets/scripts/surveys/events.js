@@ -48,8 +48,10 @@ const onDestroy = function (event) {
 const onUpdate = function (event) {
   event.preventDefault()
   const surveyId = $(this).attr('surveyId')
-  const data = getFormFields(event.target)
-  api.update(surveyId, data)
+  let data = getFormFields(event.target)
+  // data = data.survey.target
+  // console.log(data.survey.title)
+  api.update(surveyId, data.survey.title)
     .then(ui.updateSuccess)
     .catch(ui.updateFailure)
 }
@@ -65,10 +67,11 @@ const addHandlers = () => {
   $('#indexOfSurveys').on('click', onIndexOfSurveys)
   $('#show-auth-user-surveys').on('click', onShowAuthUserSurveys)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
-  $('#auth-user-content').on('click', '.delete-survey-button', onDestroy)
+  $('#handlebar-target').on('click', '.delete-survey-button', onDestroy)
   // $('#content').on('click', '.show-questions-button', onGetQuestions)
-  $('#auth-user-content').on('submit', '.update-survey-by-id-form', onUpdate)
+  // $('#handlebar-target').on('submit', '.update-survey-by-id-form', onUpdate)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
+  $('#handlebar-target').on('submit', '#rename-auth-survey-by-id-button', onUpdate)
 }
 
 module.exports = {
