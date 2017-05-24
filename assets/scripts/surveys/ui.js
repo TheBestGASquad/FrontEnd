@@ -114,12 +114,5 @@ module.exports = {
   updateSuccess,
   updateFailure,
   showAuthUserSurveysSuccess,
-<<<<<<< HEAD
   showAuthUserSurveysFailure
-=======
-  showAuthUserSurveysFailure,
-  // refreshTable,
-  surveyQuestionSuccess,
-  surveyQuestionFailure
->>>>>>> Moved all handlebars scripts to one file
 }

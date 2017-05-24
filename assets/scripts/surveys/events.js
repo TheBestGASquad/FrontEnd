@@ -69,13 +69,7 @@ const addHandlers = () => {
   $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#handlebar-target').on('click', '.delete-survey-button', onDestroy)
   // $('#content').on('click', '.show-questions-button', onGetQuestions)
-<<<<<<< HEAD
   // $('#handlebar-target').on('submit', '.update-survey-by-id-form', onUpdate)
-=======
-  $('#auth-user-content').on('submit', '.update-survey-by-id-form', onUpdate)
-  $('#content').on('submit', '.update-survey-by-id-form', onUpdate)
-  $('#content').on('click', '.view-questions-button', onSurveyQuestions)
->>>>>>> Necessary commit
   $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#handlebar-target').on('submit', '#rename-auth-survey-by-id-button', onUpdate)
 }
