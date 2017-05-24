@@ -10,7 +10,7 @@ const createSurvey = (data) => {
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: data
   })
 }
 
@@ -32,7 +32,8 @@ const createQuestion = (data) => {
   })
 }
 
-const indexOfSurveys = function () {
+const indexOfSurveys = function (data) {
+  console.log('success index of surveys function fired')
   return $.ajax({
     url: config.apiOrigin + '/surveys/',
     method: 'GET'
@@ -57,31 +58,17 @@ const userIndex = function () {
   })
 }
 
-// left from past rebase
-// const surveyQuestions = function (id) {
-//   console.log(id)
-
-// left from past rebase
-// const showAuthUserSurveys = (data) => {
-//   console.log('success show auth user survey function fired')
-
-const userIndex = function () {
+const showAuthUserSurveys = (data) => {
+  console.log('success show auth user survey function fired')
   return $.ajax({
     url: config.apiOrigin + '/user-surveys',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: {
-      'survey': {
-        'id': store.user._id
-      }
-    }
+    data
   })
 }
-
-// left from past rebase
-// const destroy = function (surveyId) {
 
 // returns every question with a survey ID that matches the passed argument
 const surveyQuestions = function (id) {
@@ -96,9 +83,7 @@ const surveyQuestions = function (id) {
   })
 }
 
-const show = function (id) {
-  return $.ajax({
-
+const surveyQuestions = function (id) {
   return $.ajax({
     url: config.apiOrigin + '/questions',
     method: 'GET',

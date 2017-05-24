@@ -120,8 +120,7 @@ module.exports = {
   updateFailure,
   showAuthUserSurveysSuccess,
   showAuthUserSurveysFailure
-  showAuthUserSurveysFailure,
   // refreshTable,
-  surveyQuestionSuccess,
-  surveyQuestionFailure
+  // surveyQuestionSuccess,
+  // surveyQuestionFailure
 }
