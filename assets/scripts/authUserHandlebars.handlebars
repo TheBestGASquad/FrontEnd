@@ -1,23 +1,26 @@
-<!--for editable survey, can (rename - change edit button) survey, view survey rename to view questions, delete // mostly done, survey title-->
-
+<!--for editable survey, can (rename - change edit button) survey, view survey rename to view questions, delete // mostly done, survey title
+auth-user-content
+-->
+<html>
 <table id="auth-user-survey-table" class="table table-striped signed-in-view">
 
  <thead>
     <tr>
-      <th>Survey Title --> survey.title --> </th>
+      <th>{{survey.title}}</th>
     </tr>
   </thead>
 {{#each surveys as |survey|}}
       <tr>
         <td>{{survey.title}}</td>
         <td>{{survey.owner}}</td>
-        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger view-questions-button">View Survey</button></td>
+        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-info view-questions-button">View Survey</button></td>
         <td><button userId="{{user.id}}" type="click" class="btn btn-danger delete-auth-survey-button">Delete</button></td>
         <td><form class="update-survey-by-id-form" userId="{{user.id}}">
             <input type="text" id="update-auth-survey-by-id-button" name="survey[title]">
             <input type="hidden" name="id" value="{{user.id}}">
-        <button userId="{{user.id}}" type="submit" task="text" class="btn btn-info update-survey-button">Edit</button>
+        <button userId="{{user.id}}" type="submit" task="text" class="btn btn-info update-survey-button">Rename</button>
       </form>
       </tr>
   {{/each}}
 </table>
+</html>

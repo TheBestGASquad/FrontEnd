@@ -1,10 +1,10 @@
-<!--show all user surveys, show all my surveys button, view this survey by owner, can (rename - change edit button) survey, view survey rename to view questions, delete // mostly done, survey title-->
+<!--show all user surveys, show all my surveys button, view this survey by owner, can (rename - change edit button) survey, view survey rename to view questions, delete, results (t/f) column // mostly done, survey title-->
 
 <table id="auth-user-survey-table" class="table table-striped signed-in-view">
 
  <thead>
     <tr>
-      <th>Survey Title --> survey.title --> </th>
+    <th>{{survey.title}}</th>
     </tr>
   </thead>
 {{#each surveys as |survey|}}
@@ -16,7 +16,7 @@
         <td><form class="update-survey-by-id-form" userId="{{user.id}}">
             <input type="text" id="update-auth-survey-by-id-button" name="survey[title]">
             <input type="hidden" name="id" value="{{user.id}}">
-        <button userId="{{user.id}}" type="submit" task="text" class="btn btn-info update-survey-button">Edit</button>
+        <button userId="{{user.id}}" type="submit" task="text" class="btn btn-info update-survey-button">Rename</button>
       </form>
       </tr>
   {{/each}}

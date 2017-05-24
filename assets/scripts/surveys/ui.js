@@ -2,9 +2,45 @@
 
 const store = require('../store.js')
 const api = require('./api.js')
-const showSurveyHB = require('../surveyHandlebars.handlebars')
-const showQuestionHB = require('../questionsHandlebars.handlebars')
-const showUserSurveyHB = require('../authUserHandlebars.handlebars')
+
+const unauthUserSurveyHB = require('../surveyHandlebars.handlebars')
+const authUserSurveyHB = require('../authUserHandlebars.handlebars')
+// const answerableSurveyHB = require('../answerableSurvey.handlebars')
+const editableSurveyHB = require('../editableSurveys.handlebars')
+
+// const userMessage = (txt) => {
+//   const message = $('#message')[0]
+//   $(message).text(txt)
+//   setTimeout(function () { $('#message').text('') }, 2000)
+// }
+
+const refreshUnauthUserSurveyTable = () => {
+  const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: store.userSurveys })
+  console.log('refresh-unauth-user')
+  $('#unauth-user-content').empty()
+  $('#unauth-user-content').append(unauthUserSurveyHtml)
+}
+
+const refreshAuthUserSurveyTable = () => {
+  const authUserSurveyHtml = authUserSurveyHB({ surveys: store.userSurveys })
+  console.log('refresh-auth-user')
+  $('#auth-user-content').empty()
+  $('#auth-user-content').append(authUserSurveyHtml)
+}
+
+// const refreshAnswerableSurveyTable = () => {
+//   const answerableSurveyHtml = answerableSurveyHB({ surveys: store.userSurveys })
+//   console.log('refresh-answerable')
+//   $('#answerable-survey').empty()
+//   $('#answerable-survey').append(answerableSurveyHtml)
+// }
+
+const refreshEditableSurveyTable = () => {
+  const editableSurveyHtml = editableSurveyHB({ surveys: store.userSurveys })
+  console.log('refresh-editable')
+  $('#editable-survey').empty()
+  $('#editable-survey').append(editableSurveyHtml)
+}
 
 const createSurveySuccess = (response) => {
   store.surveyID = response.survey.id
@@ -27,32 +63,12 @@ const createQuestionSuccess = (response) => {
   console.log(response)
 }
 
-const refreshTable = () => {
-  const showSurveyHtml = showSurveyHB({ surveys: store.userSurveys })
-  console.log('refresh')
-  $('#content').empty()
-  $('#content').append(showSurveyHtml)
-}
-
-const refreshSurveyList = () => {
-  const showUserSurveyHtml = showUserSurveyHB({ surveys: store.userSurveys })
-  console.log('refresh')
-  $('#auth-user-content').empty()
-  $('#auth-user-content').append(showUserSurveyHtml)
-}
-
-const userMessage = (txt) => {
-  const message = $('#message')[0]
-  $(message).text(txt)
-  setTimeout(function () { $('#message').text('') }, 2000)
-}
-
 const indexOfSurveysSuccess = (data) => {
-  if (data.userSurveys.length === 0) {
-    userMessage('You have no surveys created.')
-  }
+  // if (data.userSurveys.length === 0) {
+  //   userMessage('You have no surveys created.')
+  // }
   store.userSurveys = data.surveys
-  refreshTable()
+  refreshUnauthUserSurveyTable()
 }
 
 const indexOfSurveysFailure = (surveyId) => {
@@ -61,9 +77,9 @@ const indexOfSurveysFailure = (surveyId) => {
 }
 
 const showAuthUserSurveysSuccess = (data) => {
-  console.log('show user survey fired', data)
+  console.log('show auth user survey fired', data)
+  refreshAuthUserSurveyTable()
   store.userSurveys = data.surveys
-  refreshSurveyList()
 }
 
 const showAuthUserSurveysFailure = (data) => {
@@ -71,7 +87,7 @@ const showAuthUserSurveysFailure = (data) => {
 }
 
 const destroySuccess = () => {
-  refreshTable()
+  refreshEditableSurveyTable()
   api.indexOfSurveys()
     .then(indexOfSurveysSuccess)
     .catch(indexOfSurveysFailure)
@@ -85,7 +101,7 @@ const destroyFailure = (data) => {
 const updateSuccess = (surveyId) => {
   console.log(surveyId)
   console.log('successful update')
-  refreshTable()
+  refreshEditableSurveyTable()
   api.indexOfSurveys()
     .then(indexOfSurveysSuccess)
     .catch(indexOfSurveysFailure)
@@ -104,7 +120,6 @@ module.exports = {
   destroyFailure,
   updateSuccess,
   updateFailure,
-  refreshTable,
   showAuthUserSurveysSuccess,
   showAuthUserSurveysFailure
 }

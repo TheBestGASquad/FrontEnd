@@ -1,6 +1,6 @@
 <!--unauthorized, view survey for rando: loads question in survey, load in a way to answer not edit -->
 
-<table id="auth-user-survey-table" class="table table-striped signed-in-view">
+<!-- <table id="auth-user-survey-table" class="table table-striped signed-in-view">
 
  <thead>
     <tr>
@@ -9,15 +9,18 @@
   </thead>
 {{#each surveys as |survey|}}
       <tr>
-        <td>{{survey.title}}</td>
+        <td>{{survey.question}}</td>
         <td>{{survey.owner}}</td>
-        <!-- <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger view-questions-button">View Survey</button></td> -->
-        <td><button userId="{{user.id}}" type="click" class="btn btn-danger delete-auth-survey-button">Delete</button></td>
+        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger view-questions-button">View Survey</button></td>
+
+        <td><input type="radio" value="{{}}" {{#unless @index}}checked="checked"{{/unless}} />
+
+          <button userId="{{user.id}}" type="click" class="btn btn-danger delete-auth-survey-button">Delete</button></td>
         <td><form class="update-survey-by-id-form" userId="{{user.id}}">
             <input type="text" id="update-auth-survey-by-id-button" name="survey[title]">
-            <input type="hidden" name="id" value="{{user.id}}">
-        <button userId="{{user.id}}" type="submit" task="text" class="btn btn-info update-survey-button">Edit</button>
-      </form>
+            <input type="hidden" name="id" value="{{user.id}}"> -->
+        <!-- <button userId="{{user.id}}" type="submit" task="text" class="btn btn-info update-survey-button">Edit</button> -->
+      <!-- </form>
       </tr>
   {{/each}}
-</table>
+</table> -->

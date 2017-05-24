@@ -1,6 +1,8 @@
-<!-- rando taking survey: show all surveys, unauthorized, show survey title - view survey button right now, button that says take survey, button initiates show questions answerable not editable, no delete, radio button, take survey, creater, number of questions -->
+<!-- rando taking survey: show all surveys, unauthorized, show survey title - view survey button right now, button that says take survey, button initiates show questions answerable not editable, no delete, radio button, take survey, creater, number of questions
+unauth-user-content
+-->
 
-<table id="user-survey-table" class="table table-striped signed-in-view">
+<table id="unauth-user-survey-table" class="table table-striped signed-in-view">
 
  <thead>
     <tr>
@@ -11,12 +13,12 @@
       <tr>
         <td>{{survey.title}}</td>
         <td>{{survey.owner}}</td>
-        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger view-questions-button">View Survey</button></td>
-        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger delete-survey-button">Delete</button></td>
-        <td><form class="update-survey-by-id-form" surveyId="{{survey.id}}">
+        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-primary view-questions-button">Take Survey</button></td>
+        <!-- <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger delete-survey-button">Delete</button></td> -->
+        <!-- <td><form class="update-survey-by-id-form" surveyId="{{survey.id}}">
             <input type="text" id="update-survey-by-id-button" name="survey[title]">
-            <input type="hidden" name="id" value="{{survey.id}}">
-        <button surveyId="{{survey.id}}" type="submit" task="text" class="btn btn-info update-survey-button">Edit</button>
+            <input type="hidden" name="id" value="{{survey.id}}"> -->
+        <!-- <button surveyId="{{survey.id}}" type="submit" task="text" class="btn btn-info update-survey-button">Edit</button> -->
       </form>
       </tr>
   {{/each}}
