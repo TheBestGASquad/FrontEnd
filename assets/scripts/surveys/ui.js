@@ -14,19 +14,21 @@ const editableSurveyHB = require('../editableSurveys.handlebars')
 //   setTimeout(function () { $('#message').text('') }, 2000)
 // }
 
-const refreshUnauthUserSurveyTable = () => {
-  const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: store.userSurveys })
-  console.log('refresh-unauth-user')
-  $('#unauth-user-content').empty()
-  $('#unauth-user-content').append(unauthUserSurveyHtml)
-}
-
-const refreshAuthUserSurveyTable = () => {
-  const authUserSurveyHtml = authUserSurveyHB({ surveys: store.userSurveys })
-  console.log('refresh-auth-user')
-  $('#auth-user-content').empty()
-  $('#auth-user-content').append(authUserSurveyHtml)
-}
+// const refreshUnauthUserSurveyTable = () => {
+//   const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: store.userSurveys })
+//   console.log('refresh-unauth-user')
+//   $('#unauth-user-content').empty()
+//   $('#unauth-user-content').append(unauthUserSurveyHtml)
+// }
+//
+// const refreshAuthUserSurveyTable = (data) => {
+//   console.log(data)
+//   const authUserSurveyHtml = authUserSurveyHB({ surveys: data })
+//   console.log(store.userSurveys)
+//   console.log('refresh-auth-user')
+//   $('#auth-user-content').empty()
+//   $('#auth-user-content').append(authUserSurveyHtml)
+// }
 
 // const refreshAnswerableSurveyTable = () => {
 //   const answerableSurveyHtml = answerableSurveyHB({ surveys: store.userSurveys })
@@ -64,11 +66,11 @@ const createQuestionSuccess = (response) => {
 }
 
 const indexOfSurveysSuccess = (data) => {
-  // if (data.userSurveys.length === 0) {
-  //   userMessage('You have no surveys created.')
-  // }
-  store.userSurveys = data.surveys
-  refreshUnauthUserSurveyTable()
+  if (data.surveys.length === 0) {
+    $('#user-message').text('You have no surveys created.')
+  }
+  const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: data.surveys })
+  $('#handlebar-target').html(unauthUserSurveyHtml)
 }
 
 const indexOfSurveysFailure = (surveyId) => {
@@ -78,8 +80,8 @@ const indexOfSurveysFailure = (surveyId) => {
 
 const showAuthUserSurveysSuccess = (data) => {
   console.log('show auth user survey fired', data)
-  refreshAuthUserSurveyTable()
   store.userSurveys = data.surveys
+  refreshAuthUserSurveyTable(data)
 }
 
 const showAuthUserSurveysFailure = (data) => {
