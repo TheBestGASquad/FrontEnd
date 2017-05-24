@@ -12,11 +12,15 @@
         <td>{{question.prompt}}</td>
       <td>
         <fieldset>
-        <form class="answer-question" questionId="{{question.id}}">
-          <button questionId="{{question.id}}" type="submit" value=1 task="text" class="btn btn-info answer-question-button">yes</button>
-          <button questionId="{{question.id}}" type="submit" value=0 task="text" class="btn btn-info answer-question-button">no</button>
+        <form class="answer-question" value=1 questionId="{{question.id}}">
+          <button questionId="{{question.id}}" type="submit"  task="text" class="btn btn-info answer-question-button">yes</button>
         </form>
       </fieldset>
+      <fieldset>
+      <form class="answer-question" value=0 questionId="{{question.id}}">
+        <button questionId="{{question.id}}" type="submit" task="text" class="btn btn-info answer-question-button">no</button>
+      </form>
+    </fieldset>
     </td>
       </tr>
   {{/each}}
