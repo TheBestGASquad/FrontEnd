@@ -39,6 +39,24 @@ const indexOfSurveys = function () {
     // headers: {
     //   Authorization: 'Token token=' + store.user.token
     // }
+<<<<<<< HEAD
+=======
+  })
+}
+
+const userIndex = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/user-surveys',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'survey': {
+        'id': store.user._id
+      }
+    }
+>>>>>>> featureone
   })
 }
 
@@ -57,6 +75,7 @@ const userIndex = function () {
   })
 }
 
+<<<<<<< HEAD
 // returns every question with a survey ID that matches the passed argument
 const surveyQuestions = function (id) {
   console.log(id)
@@ -73,6 +92,23 @@ const surveyQuestions = function (id) {
 
 const show = function (id) {
   return $.ajax({
+=======
+const surveyQuestions = function (id) {
+  console.log(id)
+  return $.ajax({
+    url: config.apiOrigin + '/questions',
+    method: 'GET',
+    data: {
+      'question': {
+        '_survey': id
+      }
+    }
+  })
+}
+
+const show = function (id) {
+  return $.ajax({
+>>>>>>> featureone
     url: config.apiOrigin + '/surveys/' + id,
     method: 'GET'
     // headers: {
@@ -122,6 +158,10 @@ module.exports = {
   update,
   answerQuestion,
   indexOfSurveys,
+<<<<<<< HEAD
+=======
+  showAuthUserSurveys,
+>>>>>>> featureone
   userIndex,
   surveyQuestions,
   show,

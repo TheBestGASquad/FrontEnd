@@ -2,10 +2,10 @@
 
 const store = require('../store.js')
 const api = require('./api.js')
-const unauthUserSurveyHB = require('../surveyHandlebars.handlebars')
-const authUserSurveyHB = require('../authUserHandlebars.handlebars')
-// const answerableSurveyHB = require('../answerableSurvey.handlebars')
-const editableSurveyHB = require('../editableSurveys.handlebars')
+const unauthUserSurveyHB = require('../templates/surveyHandlebars.handlebars')
+const authUserSurveyHB = require('../templates/authUserHandlebars.handlebars')
+// const answerableSurveyHB = require('../templates/answerableSurvey.handlebars')
+const editableSurveyHB = require('../templates/editableSurveys.handlebars')
 
 // const userMessage = (txt) => {
 //   const message = $('#message')[0]
@@ -13,19 +13,14 @@ const editableSurveyHB = require('../editableSurveys.handlebars')
 //   setTimeout(function () { $('#message').text('') }, 2000)
 // }
 
-const refreshUnauthUserSurveyTable = () => {
-  const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: store.userSurveys })
-  console.log('refresh-unauth-user')
-  $('#unauth-user-content').empty()
-  $('#unauth-user-content').append(unauthUserSurveyHtml)
-}
-
-const refreshAuthUserSurveyTable = () => {
-  const authUserSurveyHtml = authUserSurveyHB({ surveys: store.userSurveys })
-  console.log('refresh-auth-user')
-  $('#auth-user-content').empty()
-  $('#auth-user-content').append(authUserSurveyHtml)
-}
+// const refreshAuthUserSurveyTable = (data) => {
+//   console.log(data)
+//   const authUserSurveyHtml = authUserSurveyHB({ surveys: data })
+//   console.log(store.userSurveys)
+//   console.log('refresh-auth-user')
+//   $('#auth-user-content').empty()
+//   $('#auth-user-content').append(authUserSurveyHtml)
+// }
 
 // const refreshAnswerableSurveyTable = () => {
 //   const answerableSurveyHtml = answerableSurveyHB({ surveys: store.userSurveys })
@@ -59,22 +54,25 @@ const createQuestionSuccess = (response) => {
 }
 
 const indexOfSurveysSuccess = (data) => {
-  // if (data.userSurveys.length === 0) {
-  //   userMessage('You have no surveys created.')
-  // }
-  store.userSurveys = data.surveys
-  refreshUnauthUserSurveyTable()
+  console.log(data)
+  if (data.surveys.length === 0) {
+    $('#user-message').text('There are no surveys to take.')
+  }
+  const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: data.surveys })
+  $('#handlebar-target').html(unauthUserSurveyHtml)
 }
 
 const indexOfSurveysFailure = (surveyId) => {
-  store.userSurveys = surveyId.surveys
-  console.log('failed to index')
+  $('#user-message').text('Server ping failed.')
 }
 
 const showAuthUserSurveysSuccess = (data) => {
-  console.log('show auth user survey fired', data)
-  refreshAuthUserSurveyTable()
-  store.userSurveys = data.surveys
+  // console.log(data)
+  // if (data.survey.length === 0) {
+  //   $('#user-message').text('You have no surveys created.')
+  // }
+  const answerableSurveyHtml = authUserSurveyHB({ surveys: data.survey })
+  $('#handlebar-target').html(answerableSurveyHtml)
 }
 
 const showAuthUserSurveysFailure = (data) => {
@@ -113,7 +111,6 @@ const surveyQuestionSuccess = (data) => {
 const surveyQuestionFailure = (data) => {
   console.log(data)
   $('.alert').text('failed return')
-  $('.return-hold').text(JSON.parse(data))
 }
 
 module.exports = {
@@ -126,12 +123,8 @@ module.exports = {
   destroyFailure,
   updateSuccess,
   updateFailure,
-<<<<<<< HEAD
   showAuthUserSurveysSuccess,
-  showAuthUserSurveysFailure
-=======
-  refreshTable,
+  showAuthUserSurveysFailure,
   surveyQuestionSuccess,
   surveyQuestionFailure
->>>>>>> View Survey button fires surveyQuestion API call
 }
