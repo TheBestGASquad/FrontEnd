@@ -54,6 +54,15 @@ const onUpdate = function (event) {
     .catch(ui.updateFailure)
 }
 
+// event to return all questions associated with this survey
+const onSurveyQuestions = function (event) {
+  event.preventDefault()
+  const surveyId = $(this).attr('surveyId')
+  api.surveyQuestions(surveyId)
+    .then(ui.surveyQuestionSuccess)
+    .catch(ui.surveyQuestionFailure)
+}
+
 const onRevealAddQuestion = function (event) {
   console.log('events')
   $('form#create-survey').show()
@@ -67,7 +76,12 @@ const addHandlers = () => {
   $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#auth-user-content').on('click', '.delete-survey-button', onDestroy)
   // $('#content').on('click', '.show-questions-button', onGetQuestions)
+<<<<<<< HEAD
   $('#auth-user-content').on('submit', '.update-survey-by-id-form', onUpdate)
+=======
+  $('#content').on('submit', '.update-survey-by-id-form', onUpdate)
+  $('#content').on('click', '.view-questions-button', onSurveyQuestions)
+>>>>>>> View Survey button fires surveyQuestion API call
   $('#create-survey-nav').on('click', onRevealAddQuestion)
 }
 
