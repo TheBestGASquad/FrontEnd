@@ -24,6 +24,7 @@ const signInSuccess = (data) => {
   $('form#sign-up').hide()
   $('form#sign-in').hide()
 <<<<<<< HEAD
+<<<<<<< HEAD
   $('a.dropdown-toggle').css('visibility', 'visible')
   $('#indexOfSurveys').hide()
   $('#indexOfUserSurveys').show()
@@ -31,6 +32,9 @@ const signInSuccess = (data) => {
 =======
   $('.alert').text('Signed in')
 >>>>>>> View Survey button fires surveyQuestion API call
+=======
+  $('.alert').text('Signed in')
+>>>>>>> featureone3
 
 //   document.getElementById('sign-in').reset()
 //   $('button#nav-add-instrument').show()

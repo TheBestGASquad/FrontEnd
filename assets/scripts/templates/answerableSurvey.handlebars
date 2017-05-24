@@ -1,0 +1,27 @@
+<!-- unauthorized, view question for rando: loads question in survey, load in a way to answer not edit -->
+
+<table id="auth-user-survey-table" class="table table-striped signed-in-view">
+
+ <thead>
+    <tr>
+      <th>Question Prompt</th>
+    </tr>
+  </thead>
+{{#each questions as |question|}}
+      <tr>
+        <td>{{question.prompt}}</td>
+      <td>
+        <fieldset>
+        <form class="answer-question" value=1 questionId="{{question.id}}">
+          <button questionId="{{question.id}}" type="submit"  task="text" class="btn btn-info answer-question-button">yes</button>
+        </form>
+      </fieldset>
+      <fieldset>
+      <form class="answer-question" value=0 questionId="{{question.id}}">
+        <button questionId="{{question.id}}" type="submit" task="text" class="btn btn-info answer-question-button">no</button>
+      </form>
+    </fieldset>
+    </td>
+      </tr>
+  {{/each}}
+</table>

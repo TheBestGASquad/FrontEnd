@@ -67,6 +67,24 @@ const onUpdate = function (event) {
 //     .catch(ui.surveyQuestionFailure)
 // }
 
+const onTakeSurvey = function (event) {
+  event.preventDefault()
+  const surveyId = $(this).attr('surveyId')
+  api.surveyQuestions(surveyId)
+    .then(ui.surveyQuestionSuccess)
+    .catch(ui.surveyQuestionFailure)
+}
+
+const onAnswerQuestion = function (event) {
+  event.preventDefault()
+  const id = $(this).attr('questionId')
+  let data = $(this).attr('Value')
+  data = data === '1'
+  api.answerQuestion(data, id)
+    .then(ui.answerSuccess)
+    .catch(ui.answerFailure)
+}
+
 const onRevealAddQuestion = function (event) {
   console.log('events')
   $('form#create-survey').show()
@@ -81,9 +99,10 @@ const addHandlers = () => {
   $('#handlebar-target').on('click', '.delete-auth-survey-button', onDestroy)
   // $('#content').on('click', '.show-questions-button', onGetQuestions)
   // $('#handlebar-target').on('submit', '.update-survey-by-id-form', onUpdate)
-  // $('#create-survey-nav').on('click', onRevealAddQuestion)
-  $('#handlebar-target').on('submit', '.update-survey-button', onUpdate)
-  $('handlebar-target').on('click', '.view-questions-button')
+  $('#create-survey-nav').on('click', onRevealAddQuestion)
+  $('#handlebar-target').on('submit', '#rename-auth-survey-by-id-button', onUpdate)
+  $('#handlebar-target').on('click', '.take-survey', onTakeSurvey)
+  $('#handlebar-target').on('click', '.answer-question', onAnswerQuestion)
 }
 
 module.exports = {
