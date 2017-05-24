@@ -71,6 +71,17 @@ const updateSuccess = (surveyId) => {
 const updateFailure = (data) => {
 }
 
+const surveyQuestionSuccess = (data) => {
+  console.log(data)
+  $('.alert').text('successful return')
+}
+
+const surveyQuestionFailure = (data) => {
+  console.log(data)
+  $('.alert').text('failed return')
+  $('.return-hold').text(JSON.parse(data))
+}
+
 module.exports = {
   createSurveySuccess,
   createSurveyFailure,
@@ -81,5 +92,7 @@ module.exports = {
   destroyFailure,
   updateSuccess,
   updateFailure,
-  refreshTable
+  refreshTable,
+  surveyQuestionSuccess,
+  surveyQuestionFailure
 }
