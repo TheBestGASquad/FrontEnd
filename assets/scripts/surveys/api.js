@@ -55,8 +55,6 @@ const userIndex = function () {
         'id': store.user._id
       }
     }
-=======
->>>>>>> Streamlines UX,
   })
 }
 
@@ -75,6 +73,7 @@ const userIndex = function () {
   })
 }
 
+// returns every question with a survey ID that matches the passed argument
 const surveyQuestions = function (id) {
   console.log(id)
 <<<<<<< HEAD
