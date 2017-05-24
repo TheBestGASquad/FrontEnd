@@ -58,6 +58,15 @@ const onUpdate = function (event) {
     .catch(ui.updateFailure)
 }
 
+// event to return all questions associated with this survey
+// const onSurveyQuestions = function (event) {
+//   event.preventDefault()
+//   const surveyId = $(this).attr('surveyId')
+//   api.surveyQuestions(surveyId)
+//     .then(ui.surveyQuestionSuccess)
+//     .catch(ui.surveyQuestionFailure)
+// }
+
 const onRevealAddQuestion = function (event) {
   console.log('events')
   $('form#create-survey').show()
