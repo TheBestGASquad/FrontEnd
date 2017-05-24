@@ -2,10 +2,10 @@
 
 const store = require('../store.js')
 const api = require('./api.js')
-const unauthUserSurveyHB = require('../surveyHandlebars.handlebars')
-const authUserSurveyHB = require('../authUserHandlebars.handlebars')
-// const answerableSurveyHB = require('../answerableSurvey.handlebars')
-const editableSurveyHB = require('../editableSurveys.handlebars')
+const unauthUserSurveyHB = require('../templates/surveyHandlebars.handlebars')
+const authUserSurveyHB = require('../templates/authUserHandlebars.handlebars')
+// const answerableSurveyHB = require('../templates/answerableSurvey.handlebars')
+const editableSurveyHB = require('../templates/editableSurveys.handlebars')
 
 // const userMessage = (txt) => {
 //   const message = $('#message')[0]
@@ -114,5 +114,12 @@ module.exports = {
   updateSuccess,
   updateFailure,
   showAuthUserSurveysSuccess,
+<<<<<<< HEAD
   showAuthUserSurveysFailure
+=======
+  showAuthUserSurveysFailure,
+  // refreshTable,
+  surveyQuestionSuccess,
+  surveyQuestionFailure
+>>>>>>> Moved all handlebars scripts to one file
 }
