@@ -4,6 +4,7 @@ const store = require('../store.js')
 const api = require('./api.js')
 const showSurveyHB = require('../surveyHandlebars.handlebars')
 const showQuestionHB = require('../questionsHandlebars.handlebars')
+const showUserSurveyHB = require('../authUserHandlebars.handlebars')
 
 const createSurveySuccess = (response) => {
   store.surveyID = response.survey.id
@@ -33,6 +34,13 @@ const refreshTable = () => {
   $('#content').append(showSurveyHtml)
 }
 
+const refreshSurveyList = () => {
+  const showUserSurveyHtml = showUserSurveyHB({ surveys: store.userSurveys })
+  console.log('refresh')
+  $('#auth-user-content').empty()
+  $('#auth-user-content').append(showUserSurveyHtml)
+}
+
 const userMessage = (txt) => {
   const message = $('#message')[0]
   $(message).text(txt)
@@ -40,7 +48,7 @@ const userMessage = (txt) => {
 }
 
 const indexOfSurveysSuccess = (data) => {
-  if (data.surveys.length === 0) {
+  if (data.userSurveys.length === 0) {
     userMessage('You have no surveys created.')
   }
   store.userSurveys = data.surveys
@@ -54,7 +62,8 @@ const indexOfSurveysFailure = (surveyId) => {
 
 const showAuthUserSurveysSuccess = (data) => {
   console.log('show user survey fired', data)
-  refreshTable()
+  store.userSurveys = data.surveys
+  refreshSurveyList()
 }
 
 const showAuthUserSurveysFailure = (data) => {

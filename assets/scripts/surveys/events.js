@@ -30,7 +30,8 @@ const onIndexOfSurveys = function (event) {
 
 const onShowAuthUserSurveys = function (event) {
   event.preventDefault()
-  api.showAuthUserSurveys()
+  const userId = $(this).attr('userId')
+  api.showAuthUserSurveys(userId)
   .then(ui.showAuthUserSurveysSuccess)
   .catch(ui.showAuthUserSurveysFailure)
 }
