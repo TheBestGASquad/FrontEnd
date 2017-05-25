@@ -46,22 +46,13 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
-// const onChangePassword = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//
-//   api.changePassword(data)
-//     .then(ui.changePasswordSuccess)
-//     .catch(ui.changePasswordFailure)
-// }
-//
-// const onSignOut = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//   api.signOut(data)
-//     .then(ui.signOutSuccess)
-//     .catch(ui.signOutFailure)
-// }
+const onChangePassword = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
+}
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
@@ -69,6 +60,7 @@ const addHandlers = () => {
   $('#sign-in-nav').on('click', onRevealSignIn)
   $('#sign-in').on('submit', onSignIn)
   $('li#sign-out').on('click', onSignOut)
+  $('li#change-password-nav').on('click', onChangePassword)
 }
 module.exports = {
   addHandlers

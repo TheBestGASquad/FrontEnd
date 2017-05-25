@@ -50,11 +50,22 @@ const signOutFailure = (data) => {
   console.log('signOutFailure')
   document.querySelector('.core').style.visibility = 'hidden'
 }
+
+const changePasswordSuccess = (data) => {
+  // userMessage('Your password has been changed.')
+}
+
+const changePasswordFailure = (response) => {
+  // userMessage('Unsuccessful password change.  Did you sign in?')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  changePasswordSuccess,
+  changePasswordFailure
 }
