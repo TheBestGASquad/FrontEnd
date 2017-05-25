@@ -126,6 +126,16 @@ const answerFailure = (data) => {
   $('.alert').text('log failure')
 }
 
+const surveyQuestionSuccess = (data) => {
+   console.log(data)
+   $('.alert').text('successful return')
+ }
+ 
+ const surveyQuestionFailure = (data) => {
+   console.log(data)
+   $('.alert').text('failed return')
+ }
+
 module.exports = {
   createSurveySuccess,
   createSurveyFailure,
@@ -139,5 +149,7 @@ module.exports = {
   surveyQuestionSuccess,
   surveyQuestionFailure,
   answerSuccess,
-  answerFailure
+  answerFailure,
+  surveyQuestionSuccess,
+  surveyQuestionFailure
 }
