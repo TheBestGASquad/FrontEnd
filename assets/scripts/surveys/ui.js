@@ -6,7 +6,7 @@ const api = require('./api.js')
 const showQuestionHB = require('../questionsHandlebars.handlebars')
 const unauthUserSurveyHB = require('../surveyHandlebars.handlebars')
 const authUserSurveyHB = require('../authUserHandlebars.handlebars')
-// const answerableSurveyHB = require('../answerableSurvey.handlebars')
+const answerableSurveyHB = require('../answerableSurvey.handlebars')
 // const editableSurveyHB = require('../editableSurveys.handlebars')
 const showQuestionHeaderHB = require('../questionsheaderHandlebars.handlebars')
 
@@ -35,6 +35,8 @@ const createQuestionSuccess = (response) => {
 
 const indexOfSurveysSuccess = (data) => {
   console.log(data)
+  $('#handlebar-target').text('')
+  $('form').hide()
   if (data.surveys.length === 0) {
     $('#user-message').text('There are no surveys to take.')
   }
@@ -47,6 +49,7 @@ const indexOfSurveysFailure = (surveyId) => {
 }
 
 const showAuthUserSurveysSuccess = (data) => {
+  $('form').hide()
   const answerableSurveyHtml = authUserSurveyHB({ surveys: data.survey })
   $('#handlebar-target').html(answerableSurveyHtml)
 }
@@ -56,9 +59,9 @@ const showAuthUserSurveysFailure = (data) => {
 }
 
 const destroySuccess = () => {
-  api.indexOfSurveys()
-    .then(indexOfSurveysSuccess)
-    .catch(indexOfSurveysFailure)
+  api.showAuthUserSurveys()
+    .then(showAuthUserSurveysSuccess)
+    .catch(showAuthUserSurveysFailure)
   console.log('successful deletion')
 }
 
@@ -78,24 +81,26 @@ const updateFailure = (data) => {
 }
 
 const surveyQuestionSuccess = (data) => {
-   console.log(data)
-   $('.alert').text('successful return')
- }
- 
- const surveyQuestionFailure = (data) => {
-   console.log(data)
-   $('.alert').text('failed return')
- }
- 
- const answerSuccess = (data) => {
+  console.log('hits questions')
+  console.log(data)
+  const answerableSurvey = answerableSurveyHB({ questions: data.question })
+  $('#handlebar-target').html(answerableSurvey)
+}
+
+const surveyQuestionFailure = (data) => {
+  console.log(data)
+  $('.alert').text('failed return')
+}
+
+const answerSuccess = (data) => {
   console.log(data)
   $('.alert').text('answer logged')
 }
+
 const answerFailure = (data) => {
   console.log(data)
   $('.alert').text('log failure')
 }
-
 
 module.exports = {
   createSurveySuccess,

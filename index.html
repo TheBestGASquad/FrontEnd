@@ -32,32 +32,21 @@
           <!-- <li><button type="button" class="btn btn-default navbar-btn" id='take-survey-nav'>Take Survey</button></li> -->
           <li> <button type="button" class="btn btn-default navbar-btn" id='create-survey-nav'>Create Survey</button></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li id='sign-out'><a href="#">Sign Out</a></li>
-              <li id='change-password-nav'><a href="#">Change Password</a></li>
+              <li id='nav-change-password'><a href="#">Change Password</a></li>
             </ul>
           </li>
         </ul>
 
         <div class="navbar-header" style="float: right;">
           <button id="indexOfSurveys" class="btn btn-default navbar-btn right">Show All Surveys</button>
-          <!-- <button id="indexOfUserSurveys" class="btn btn-default navbar-btn right">Show My Surveys</button> -->
+          <button id="indexOfUserSurveys" class="btn btn-default navbar-btn right">Show My Surveys</button>
         </div>
-
-        <div class="navbar-header" style="float: right;">
-          <form id='show-auth-user-surveys'>
-            <fieldset>
-          <input type="click" class="btn btn-default navbar-btn right" value="Show My Surveys">
-        </fieldset>
-        </form>
-        </div>
-
       </div>
-
     </div>
     <!--/.nav-collapse -->
-
   </nav>
 
   <!-- Begin page content -->
@@ -79,36 +68,17 @@
       <fieldset>
         <input class="form-control" onFocus="this.select()" type="text" name="survey[title]" placeholder="Survey Title">
         <input class="submit" type="submit" name="submit" value="Create Survey">
-        <input class="form-control" onFocus="this.select()" type="text" name="survey[title]" placeholder="Create survey">
-        <input class="submit" type="submit" name="submit" value="Create Survey!">
       </fieldset>
     </form>
 
-    <form id="create-question">
-      <fieldset>
-        <input type="text" name="prompt" placeholder="Create question">
-        <input type="submit" name="submit" value="Submit question">
-      </fieldset>
+    <form id="change-password">
+            <input class="form-control" type="password" name="passwords[old]" placeholder="Old Password" onFocus="this.select()">
+            <input class="form-control" type="password" name="passwords[new]" placeholder="New Password" onFocus="this.select()">
+            <input class="submit" type="submit" name="submit" value="Change password!">
     </form>
-
-    <!-- <form class="destroy">
-      <fieldset>
-        <input type="string" name="survey[id]" placeholder="Delete survey by ID">
-        <input type="submit" name="submit" value="Submit ID">
-      </fieldset>
-    </form> -->
-
-    <!-- <form class="update">
-      <fieldset>
-        <input type="string" name="survey[id]" placeholder="Select ID">
-        <input type="text" name="survey[title]" placeholder="Change Title">
-        <input type="submit" name="submit" value="Update Movie">
-      </fieldset>
-    </form>
-  </div> -->
-
+</div>
   <!-- This is where handlebars inserts -->
-  <div id="content"></div>
+  <div id="handlebar-target"></div>
   <form id="create-question">
     <fieldset>
       <input class="form-control" type="text" name="prompt" placeholder="Enter question">

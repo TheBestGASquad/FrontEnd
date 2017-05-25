@@ -44,11 +44,27 @@ const signInFailure = (data) => {
 
 const signOutSuccess = (data) => {
   console.log('signOutSuccess')
+  $('#sign-in-nav').show()
+  $('#sign-up-nav').show()
+  $('a.dropdown-toggle').css('visibility', 'invisible')
+  $('#indexOfSurveys').show()
+  $('#indexOfUserSurveys').hide()
+  $('#create-survey-nav').hide()
+  $('form').hide()
+  $('#handlebar-target').text('')
 }
 
 const signOutFailure = (data) => {
   console.log('signOutFailure')
   document.querySelector('.core').style.visibility = 'hidden'
+}
+
+const changePasswordSuccess = (data) => {
+  $('#handlebar-target').text('Password changed')
+}
+
+const changePasswordFailure = () => {
+  $('#handlebar-target').text('Change Password error')
 }
 module.exports = {
   signUpSuccess,
@@ -56,5 +72,7 @@ module.exports = {
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  changePasswordSuccess,
+  changePasswordFailure
 }

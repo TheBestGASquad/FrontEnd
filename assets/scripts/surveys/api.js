@@ -43,20 +43,20 @@ const indexOfSurveys = function (data) {
   })
 }
 
-const userIndex = function () {
-  return $.ajax({
-    url: config.apiOrigin + '/user-surveys',
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data: {
-      'survey': {
-        'id': store.user._id
-      }
-    }
-  })
-}
+// const userIndex = function () {
+//   return $.ajax({
+//     url: config.apiOrigin + '/user-surveys',
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     },
+//     data: {
+//       'survey': {
+//         'id': store.user._id
+//       }
+//     }
+//   })
+// }
 
 const showAuthUserSurveys = (data) => {
   console.log('data is ', data)
@@ -136,7 +136,7 @@ module.exports = {
   answerQuestion,
   indexOfSurveys,
   showAuthUserSurveys,
-  userIndex,
+  // userIndex,
   surveyQuestions,
   show,
   destroy

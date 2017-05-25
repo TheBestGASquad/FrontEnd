@@ -6,6 +6,8 @@ const api = require('./api')
 const ui = require('./ui')
 
 const onRevealSignUp = function () {
+  $('form').hide()
+  $('#handlebar-target').text('')
   console.log('reavealevents')
   $('form#sign-up').animate({
     height: 'toggle'
@@ -14,6 +16,8 @@ const onRevealSignUp = function () {
 }
 
 const onRevealSignIn = function () {
+  $('form').hide()
+  $('#handlebar-target').text('')
   console.log('reavealevents')
   $('form#sign-in').animate({
     height: 'toggle'
@@ -46,22 +50,23 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
-// const onChangePassword = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//
-//   api.changePassword(data)
-//     .then(ui.changePasswordSuccess)
-//     .catch(ui.changePasswordFailure)
-// }
-//
-// const onSignOut = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//   api.signOut(data)
-//     .then(ui.signOutSuccess)
-//     .catch(ui.signOutFailure)
-// }
+const onChangePassword = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
+}
+
+const onRevealChangePassword = function () {
+  $('form').hide()
+  $('#handlebar-target').text('')
+  $('form#change-password').animate({
+    height: 'toggle'
+  }, 200, function () {})
+  // $('form#sign-up').hide()
+  // $('form#sign-in').hide()
+}
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
@@ -69,6 +74,8 @@ const addHandlers = () => {
   $('#sign-in-nav').on('click', onRevealSignIn)
   $('#sign-in').on('submit', onSignIn)
   $('li#sign-out').on('click', onSignOut)
+  $('#change-password').on('submit', onChangePassword)
+  $('#nav-change-password').on('click', onRevealChangePassword)
 }
 module.exports = {
   addHandlers
