@@ -103,6 +103,16 @@ const destroy = function (id) {
   })
 }
 
+const onDeleteQuestion = (id) => {
+  return $.ajax({
+    url: config.apiOrigin + '/questions/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const update = (surveyId, data) => {
   // console.log('I worked')
   return $.ajax({
@@ -136,15 +146,7 @@ const getQuestionData = (id) => {
   })
 }
 
-const onDeleteQuestion = (id) => {
-  return $.ajax({
-    url: config.apiOrigin + '/questions/' + id,
-    method: 'DELETE',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
+
 
 module.exports = {
   createSurvey,
