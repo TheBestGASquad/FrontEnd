@@ -146,8 +146,6 @@ const getQuestionData = (id) => {
   })
 }
 
-
-
 module.exports = {
   createSurvey,
   createQuestion,
