@@ -8,7 +8,7 @@
 {{#each questions as |question|}}
       <tr>
         <td class="prompt-title">{{question.prompt}}</td>
-        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger delete-survey-button">Delete</button></td>
+        <td><button surveyId="{{question.id}}" type="click" class="btn btn-danger delete-question-button">Delete</button></td>
       </form>
       </tr>
 {{/each}}
