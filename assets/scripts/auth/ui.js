@@ -13,12 +13,12 @@ const store = require('../store.js')
 // }
 
 const resetFormFields = () => {
-$('form#sign-up').trigger('reset')
-$('form#sign-in').trigger('reset')
-$('form#sign-out').trigger('reset')
-$('form#change-password').trigger('reset')
-$('form#create-survey').trigger('reset')
-$('form#create-question').trigger('reset')
+  $('form#sign-up').trigger('reset')
+  $('form#sign-in').trigger('reset')
+  $('form#sign-out').trigger('reset')
+  $('form#change-password').trigger('reset')
+  $('form#create-survey').trigger('reset')
+  $('form#create-question').trigger('reset')
 }
 
 const signUpSuccess = (data) => {
