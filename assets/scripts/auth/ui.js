@@ -24,7 +24,6 @@ const signUpFailure = () => {
 
 const signInSuccess = (data) => {
   store.user = data.user
-  debugger
   $('.alert').text('You have successfully signed in')
   $('#sign-in-nav').hide()
   $('#sign-up-nav').hide()

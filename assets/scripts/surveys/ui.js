@@ -84,7 +84,6 @@ const updateSuccess = (surveyId) => {
 const updateFailure = (data) => {}
 
 const takeSurveySuccess = (data) => {
-  debugger
   if (data.question.length === 0) {
     $('.alert').text('There are no Questions to Answer.')
   }
@@ -135,14 +134,12 @@ const getQuestionDataFailure = (data) => {
 }
 
 const deleteQuestionSuccess = (data) => {
-  debugger
   const targ = document.getElementById(data._id)
   $(targ).hide()
   $('.alert').text('Question Deleted')
 }
 
 const deleteQuestionFailure = (data) => {
-  debugger
   $('.alert').text('Failed to Delete Question')
 }
 
