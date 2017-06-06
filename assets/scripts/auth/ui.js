@@ -3,13 +3,22 @@ const store = require('../store.js')
 // const api = require('./api.js')
 // const getFormFields = require(`../../../lib/get-form-fields`)
 
+// const resetFormFields = () => {
+//   document.getElementById('sign-up').value = ""
+//   document.getElementById('sign-in').value = ""
+//   document.getElementById('sign-out').value = ""
+//   document.getElementById('change-password').value = ""
+//   document.getElementById('create-survey').value = ""
+//   document.getElementById('create-question').value = ""
+// }
+
 const resetFormFields = () => {
-  document.getElementById('sign-up').value = ""
-  document.getElementById('sign-in').value = ""
-  document.getElementById('sign-out').value = ""
-  document.getElementById('change-password').value = ""
-  document.getElementById('create-survey').value = ""
-  document.getElementById('create-question').value = ""
+$('form#sign-up').trigger('reset')
+$('form#sign-in').trigger('reset')
+$('form#sign-out').trigger('reset')
+$('form#change-password').trigger('reset')
+$('form#create-survey').trigger('reset')
+$('form#create-question').trigger('reset')
 }
 
 const signUpSuccess = (data) => {
@@ -24,6 +33,7 @@ const signUpFailure = () => {
 
 const signInSuccess = (data) => {
   store.user = data.user
+
   $('.alert').text('You have successfully signed in')
   $('#sign-in-nav').hide()
   $('#sign-up-nav').hide()
