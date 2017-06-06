@@ -92,8 +92,9 @@ const onGetQuestionData = function (event) {
 
 const onDeleteQuestion = function (event) {
   event.preventDefault()
-  ('events delete')
+  // ('events delete')
   const id = $(this).attr('questionId')
+  console.log(id)
   api.onDeleteQuestion(id)
     .then(ui.deleteQuestionSuccess)
     .catch(ui.deleteQuestionFailure)
