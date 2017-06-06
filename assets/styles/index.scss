@@ -90,3 +90,18 @@ code {
 .navbar{
   // font-family: 'Montserrat Subrayada', sans-serif;
 }
+
+.show-buttons {
+  float: right;
+}
+@media (max-width: 769px) {
+  .show-buttons {
+    float: none;
+  }
+  div#handlebar-target {
+    margin-top: 25%;
+  }
+  form {margin-top: 50px;
+  }
+
+}
