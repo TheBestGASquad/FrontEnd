@@ -60,7 +60,6 @@ const onRevealAddQuestion = function (event) {
 const takeSurvey = function (event) {
   event.preventDefault()
   const surveyId = $(this).attr('surveyId')
-  debugger
   api.surveyQuestions(surveyId)
    .then(ui.takeSurveySuccess)
    .catch(ui.takeSurveyFailure)
@@ -93,6 +92,8 @@ const onGetQuestionData = function (event) {
 
 const onDeleteQuestion = function (event) {
   event.preventDefault()
+  console.log('events delete')
+  debugger
   const id = $(this).attr('questionId')
   api.onDeleteQuestion(id)
     .then(ui.deleteQuestionSuccess)
@@ -117,6 +118,7 @@ const addHandlers = () => {
   $('#handlebar-target').on('click', '.get-data', onGetQuestionData)
   $('#handlebar-target').on('click', '.delete-question-button', onDeleteQuestion)
   $('#content').on('click', '.delete-question-button', onDeleteQuestion)
+  $('div#content').on('click', '.delete-survey-button', onDeleteQuestion)
 }
 
 module.exports = {
