@@ -21,18 +21,21 @@ const createSurveySuccess = (response) => {
   $('#content').html(showQuestionHtml)
   $('#handlebar-target').html('')
   $('.alert').text('You Have Created a New Survey Titled ' + response.survey.title)
-  document.getElementById('create-survey').reset()
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  document.getElementById('create-survey').value = ''
 }
 
 const createSurveyFailure = (error) => {
   $('.alert').text('You have Failed to Create a New Survey')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const createQuestionSuccess = (response) => {
   $('.alert').text('You Have Added The Question "' + response.question.prompt + '" to This Survey')
+  setTimeout(function () { $('.alert').text('') }, 4000)
   const showQuestionHtml = showQuestionHB({ questions: response })
   $('#content').append(showQuestionHtml)
-  document.getElementById('create-question').reset()
+  document.getElementById('create-question').value = ''
 }
 
 const indexOfSurveysSuccess = (data) => {
@@ -40,15 +43,19 @@ const indexOfSurveysSuccess = (data) => {
   $('form').hide()
   if (data.surveys.length === 0) {
     $('.alert').text('There are no Surveys to Take.')
+    setTimeout(function () { $('.alert').text('') }, 4000)
   }
+
   const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: data.surveys })
   $('#handlebar-target').html(unauthUserSurveyHtml)
   $('div#content').empty()
   $('.alert').text('')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const indexOfSurveysFailure = (surveyId) => {
   $('.alert').text('Unable to Retrieve Data.')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const showAuthUserSurveysSuccess = (data) => {
@@ -58,10 +65,12 @@ const showAuthUserSurveysSuccess = (data) => {
   const answerableSurveyHtml = authUserSurveyHB({ surveys: data.survey })
   $('#handlebar-target').html(answerableSurveyHtml)
   $('.alert').text('')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const showAuthUserSurveysFailure = (data) => {
   $('.alert').text('Unable to Retrieve Data.')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const destroySuccess = () => {
@@ -69,10 +78,12 @@ const destroySuccess = () => {
     .then(showAuthUserSurveysSuccess)
     .catch(showAuthUserSurveysFailure)
   $('.alert').text('Successful Survey Deletion')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const destroyFailure = (data) => {
   $('.alert').text('Survey Deletion Failed')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const updateSuccess = (surveyId) => {
@@ -86,13 +97,16 @@ const updateFailure = (data) => {}
 const takeSurveySuccess = (data) => {
   if (data.question.length === 0) {
     $('.alert').text('There are no Questions to Answer.')
+    setTimeout(function () { $('.alert').text('') }, 4000)
   }
+
   const answerableSurvey = answerableSurveyHB({ questions: data.question })
   $('#handlebar-target').html(answerableSurvey)
 }
 
 const takeSurveyFailure = (data) => {
   $('.alert').text('Unable to Return Questions From Server')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const surveyQuestionsSuccess = (data) => {
@@ -102,16 +116,19 @@ const surveyQuestionsSuccess = (data) => {
 
 const surveyQuestionsFailure = (data) => {
   $('.alert').text('Unable to Return Questions From Server')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const answerSuccess = (data) => {
   const targ = document.getElementById(data._id)
   $(targ).hide()
   $('.alert').text('Your Answer has Been Logged!')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const answerFailure = (data) => {
   $('.alert').text('Failure to Log Answers')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const extractVal = (data) => {
@@ -127,20 +144,24 @@ const getQuestionDataSuccess = (data) => {
     extractVal(data.question.results[i]) === true ? yes++ : no++
   }
   $('.alert').text(`The question '${data.question.prompt}' has been answered ${data.question.results.length} times. It got a yes ${yes} times and a no ${no} times.`)
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const getQuestionDataFailure = (data) => {
   $('.alert').text('Failure to Return Question')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const deleteQuestionSuccess = (data) => {
   const targ = document.getElementById(data._id)
   $(targ).hide()
   $('.alert').text('Question Deleted')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 const deleteQuestionFailure = (data) => {
   $('.alert').text('Failed to Delete Question')
+  setTimeout(function () { $('.alert').text('') }, 4000)
 }
 
 module.exports = {
