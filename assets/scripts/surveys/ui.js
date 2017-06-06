@@ -13,8 +13,11 @@ const showQuestionHeaderHB = require('../questionsheaderHandlebars.handlebars')
 const createSurveySuccess = (response) => {
   store.surveyID = response.survey.id
   const showQuestionHtml = showQuestionHeaderHB({ surveys: response })
+  $('.alert').text('')
   $('form#create-survey').hide()
   $('form#create-question').show()
+  $('div#content').empty()
+  $('div#content').show()
   $('#content').html(showQuestionHtml)
   $('#handlebar-target').html('')
   $('.alert').text('You Have Created a New Survey Titled ' + response.survey.title)
@@ -40,6 +43,8 @@ const indexOfSurveysSuccess = (data) => {
   }
   const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: data.surveys })
   $('#handlebar-target').html(unauthUserSurveyHtml)
+  $('div#content').empty()
+  $('.alert').text('')
 }
 
 const indexOfSurveysFailure = (surveyId) => {
@@ -47,10 +52,12 @@ const indexOfSurveysFailure = (surveyId) => {
 }
 
 const showAuthUserSurveysSuccess = (data) => {
+  $('#content').hide()
   $('form').hide()
   $('.alert').text('')
   const answerableSurveyHtml = authUserSurveyHB({ surveys: data.survey })
   $('#handlebar-target').html(answerableSurveyHtml)
+  $('.alert').text('')
 }
 
 const showAuthUserSurveysFailure = (data) => {
@@ -77,6 +84,7 @@ const updateSuccess = (surveyId) => {
 const updateFailure = (data) => {}
 
 const takeSurveySuccess = (data) => {
+  debugger
   if (data.question.length === 0) {
     $('.alert').text('There are no Questions to Answer.')
   }

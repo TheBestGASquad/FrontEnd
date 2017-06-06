@@ -4,12 +4,12 @@ const store = require('../store.js')
 // const getFormFields = require(`../../../lib/get-form-fields`)
 
 const resetFormFields = () => {
-  document.getElementById('sign-up').reset()
-  document.getElementById('sign-in').reset()
-  document.getElementById('sign-out').reset()
-  document.getElementById('change-password').reset()
-  document.getElementById('create-survey').reset()
-  document.getElementById('create-question').reset()
+  document.getElementById('sign-up').value = ""
+  document.getElementById('sign-in').value = ""
+  document.getElementById('sign-out').value = ""
+  document.getElementById('change-password').value = ""
+  document.getElementById('create-survey').value = ""
+  document.getElementById('create-question').value = ""
 }
 
 const signUpSuccess = (data) => {
@@ -24,6 +24,7 @@ const signUpFailure = () => {
 
 const signInSuccess = (data) => {
   store.user = data.user
+  debugger
   $('.alert').text('You have successfully signed in')
   $('#sign-in-nav').hide()
   $('#sign-up-nav').hide()
@@ -46,6 +47,7 @@ const signInSuccess = (data) => {
 }
 
 const signInFailure = (data) => {
+
   $('.alert').text('You Have Failed to Sign In')
   resetFormFields()
 }
@@ -59,6 +61,7 @@ const signOutSuccess = (data) => {
   $('#create-survey-nav').hide()
   $('form').hide()
   $('#handlebar-target').html('')
+  $('div#content').text('')
   $('.alert').text('You have signed out')
   resetFormFields()
 }

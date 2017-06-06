@@ -53,13 +53,14 @@ const onUpdate = function (event) {
 }
 
 const onRevealAddQuestion = function (event) {
-  $('form#create-survey').show()
+  $('form#create-survey').toggle()
   $('#handlebar-target').text('')
 }
 
 const takeSurvey = function (event) {
   event.preventDefault()
   const surveyId = $(this).attr('surveyId')
+  debugger
   api.surveyQuestions(surveyId)
    .then(ui.takeSurveySuccess)
    .catch(ui.takeSurveyFailure)
