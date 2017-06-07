@@ -1,5 +1,3 @@
-'use strict'
-
 const store = require('../store.js')
 const api = require('./api.js')
 // const showSurveyHB = require('../surveyHandlebars.handlebars')
@@ -24,7 +22,7 @@ const createSurveySuccess = (response) => {
   document.getElementById('create-survey').reset()
 }
 
-const createSurveyFailure = (error) => {
+const createSurveyFailure = () => {
   $('.alert').text('You have Failed to Create a New Survey')
 }
 

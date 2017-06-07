@@ -1,5 +1,3 @@
-'use strict'
-
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
@@ -92,7 +90,6 @@ const onGetQuestionData = function (event) {
 
 const onDeleteQuestion = function (event) {
   event.preventDefault()
-  ('events delete')
   const id = $(this).attr('questionId')
   api.onDeleteQuestion(id)
     .then(ui.deleteQuestionSuccess)
