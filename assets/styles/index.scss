@@ -90,3 +90,25 @@ code {
 .navbar{
   // font-family: 'Montserrat Subrayada', sans-serif;
 }
+
+.show-buttons {
+  float: right;
+}
+@media (max-width: 769px) {
+  .show-buttons {
+    float: none;
+  }
+  div#handlebar-target {
+    margin-top: 200px;
+  }
+  form {
+    margin-top: 250px;
+  }
+
+  form#create-question {
+    margin-top: 50px;
+  }
+  form.update-survey {
+    display: none;
+  }
+}
