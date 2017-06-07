@@ -40,7 +40,6 @@ const signUpFailure = () => {
 
 const signInSuccess = (data) => {
   store.user = data.user
-
   $('.alert').text('You have successfully signed in')
   $('#sign-in-nav').hide()
   $('#sign-up-nav').hide()
@@ -100,7 +99,7 @@ const signOutFailure = (data) => {
 }
 
 const changePasswordSuccess = (data) => {
-  $('#handlebar-target').text('Password Changed')
+  $('.alert').text('Password Changed')
   setTimeout(function () {
     $('.alert').text('')
   }, 4000)
@@ -108,7 +107,7 @@ const changePasswordSuccess = (data) => {
 }
 
 const changePasswordFailure = () => {
-  $('#handlebar-target').text('You Must Give us the Correct Password If You Want to Change It')
+  $('.alert').text('You Must Give us the Correct Password If You Want to Change It')
   setTimeout(function () {
     $('.alert').text('')
   }, 4000)
