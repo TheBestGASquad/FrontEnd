@@ -108,4 +108,7 @@ code {
   form#create-question {
     margin-top: 50px;
   }
+  form.update-survey {
+    display: none;
+  }
 }
