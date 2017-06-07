@@ -13,12 +13,12 @@ const store = require('../store.js')
 // }
 
 const resetFormFields = () => {
-$('form#sign-up').trigger('reset')
-$('form#sign-in').trigger('reset')
-$('form#sign-out').trigger('reset')
-$('form#change-password').trigger('reset')
-$('form#create-survey').trigger('reset')
-$('form#create-question').trigger('reset')
+  $('form#sign-up').trigger('reset')
+  $('form#sign-in').trigger('reset')
+  $('form#sign-out').trigger('reset')
+  $('form#change-password').trigger('reset')
+  $('form#create-survey').trigger('reset')
+  $('form#create-question').trigger('reset')
 }
 
 const signUpSuccess = (data) => {
@@ -45,18 +45,17 @@ const signInSuccess = (data) => {
   $('#create-survey-nav').show()
   $('#handlebar-target').html('')
   resetFormFields()
-//   $('button#nav-add-instrument').show()
-//   $('button#nav-sign-up').hide()
-//   $('button#nav-sign-in').hide()
-//   $('form#sign-in').hide()
-//   $('button#sign-out').show()
-//   $('button#view-instruments').show()
-//   $('button#nav-change-password').show()
-//   $('div.error-handling').text('')
+  //   $('button#nav-add-instrument').show()
+  //   $('button#nav-sign-up').hide()
+  //   $('button#nav-sign-in').hide()
+  //   $('form#sign-in').hide()
+  //   $('button#sign-out').show()
+  //   $('button#view-instruments').show()
+  //   $('button#nav-change-password').show()
+  //   $('div.error-handling').text('')
 }
 
 const signInFailure = (data) => {
-
   $('.alert').text('You Have Failed to Sign In')
   resetFormFields()
 }

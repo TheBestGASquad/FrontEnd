@@ -131,13 +131,16 @@ const getQuestionDataFailure = (data) => {
   $('.alert').text('Failure to Return Question')
 }
 
-const deleteQuestionSuccess = (data) => {
-  const targ = document.getElementById(data._id)
-  $(targ).hide()
+const deleteQuestionSuccess = () => {
+  // const targ = document.getElementById(data._id)
+  // $(targ).hide()
+  api.showAuthUserSurveys()
+    .then(showAuthUserSurveysSuccess)
+    .catch(showAuthUserSurveysFailure)
   $('.alert').text('Question Deleted')
 }
 
-const deleteQuestionFailure = (data) => {
+const deleteQuestionFailure = (questionId) => {
   $('.alert').text('Failed to Delete Question')
 }
 

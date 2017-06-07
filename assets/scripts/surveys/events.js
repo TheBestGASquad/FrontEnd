@@ -90,8 +90,9 @@ const onGetQuestionData = function (event) {
 
 const onDeleteQuestion = function (event) {
   event.preventDefault()
-  const id = $(this).attr('questionId')
-  api.onDeleteQuestion(id)
+  const questionId = $(event.target).attr('questionId')
+  console.log(questionId)
+  api.deleteQuestion(questionId)
     .then(ui.deleteQuestionSuccess)
     .catch(ui.deleteQuestionFailure)
 }
@@ -107,14 +108,14 @@ const addHandlers = () => {
   // $('#handlebar-target').on('submit', '.update-survey-by-id-form', onUpdate)
   // $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#handlebar-target').on('submit', '.update-survey', onUpdate)
-  $('handlebar-target').on('click', '.view-questions-button')
+  $('#handlebar-target').on('click', '.view-questions-button', onRevealAddQuestion)
   $('#handlebar-target').on('click', '.take-survey', takeSurvey)
   $('#handlebar-target').on('click', '.answer-question', onAnswerQuestion)
   $('#handlebar-target').on('click', '.view-questions-button', onSurveyQuestions)
   $('#handlebar-target').on('click', '.get-data', onGetQuestionData)
-  $('#handlebar-target').on('click', '.delete-question-button', onDeleteQuestion)
+  // $('#handlebar-target').on('click', '.delete-question-button', onDeleteQuestion)
+  // $('#content').on('click', '.delete-question-button', onDeleteQuestion)
   $('#content').on('click', '.delete-question-button', onDeleteQuestion)
-  $('div#content').on('click', '.delete-survey-button', onDeleteQuestion)
 }
 
 module.exports = {

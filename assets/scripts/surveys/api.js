@@ -101,9 +101,10 @@ const destroy = function (id) {
   })
 }
 
-const onDeleteQuestion = (id) => {
+const deleteQuestion = (questionId) => {
+  console.log(questionId)
   return $.ajax({
-    url: config.apiOrigin + '/questions/' + id,
+    url: config.apiOrigin + '/questions/' + questionId,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -156,5 +157,5 @@ module.exports = {
   show,
   destroy,
   getQuestionData,
-  onDeleteQuestion
+  deleteQuestion
 }

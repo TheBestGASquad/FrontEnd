@@ -3,12 +3,12 @@
 {{#each questions as |question|}}
       <tr>
         <td class="prompt-title create">{{question.prompt}}</td>
-        <!-- <td><button questionId="{{question.id}}" type="click" class="btn btn-danger delete-survey-button">Delete</button></td> -->
+        <td><button questionId="{{question.id}}" type="click" class="btn btn-danger delete-question-button">Delete</button></td>
         <!-- <td><form class="update-survey-by-id-form" surveyId="{{survey.id}}">
             <input type="text" id="update-survey-by-id-button" name="survey[description]">
             <input type="hidden" name="id" value="{{survey.id}}">
-        <button surveyId="{{survey.id}}" type="submit" task="text" class="btn btn-info update-survey-button">Edit</button> -->
-      </form>
+        <button surveyId="{{survey.id}}" type="submit" task="text" class="btn btn-info update-survey-button">Edit</button>
+      </form> -->
       </tr>
 
 {{/each}}
