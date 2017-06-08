@@ -24,6 +24,7 @@ const createSurveySuccess = (response) => {
   const showQuestionHtml = showQuestionHeaderHB({ surveys: response })
   $('.alert').text('')
   $('form#create-survey').hide()
+  $('form#change-password').hide()
   $('form#create-question').show()
   $('div#content').empty()
   $('div#content').show()
