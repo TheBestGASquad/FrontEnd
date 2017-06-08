@@ -4,6 +4,11 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 
+const validate = (input) => {
+  if (/[a-z]/.test(input.toLowerCase()) === false) { return false }
+  return true
+}
+
 const onCreateSurvey = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -47,9 +52,13 @@ const onUpdate = function (event) {
   event.preventDefault()
   const surveyId = $(this).attr('surveyId')
   const data = getFormFields(event.target)
-  api.update(surveyId, data)
-    .then(ui.updateSuccess)
-    .catch(ui.updateFailure)
+  if (validate(data.survey.title) === true) {
+    api.update(surveyId, data)
+      .then(ui.updateSuccess)
+      .catch(ui.updateFailure)
+  } else {
+    ui.updateFailure()
+  }
 }
 
 const onRevealAddQuestion = function (event) {

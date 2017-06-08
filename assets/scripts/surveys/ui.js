@@ -111,7 +111,10 @@ const updateSuccess = (surveyId) => {
   resetSurveyFormFields()
 }
 
-const updateFailure = (data) => {}
+const updateFailure = (data) => {
+  $('.alert').text('Form cannot be empty')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+}
 
 const takeSurveySuccess = (data) => {
   if (data.question.length === 0) {
