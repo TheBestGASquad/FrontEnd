@@ -113,7 +113,7 @@ const addHandlers = () => {
   $('#handlebar-target').on('submit', '.update-survey', onUpdate)
   $('handlebar-target').on('click', '.view-questions-button')
   $('#handlebar-target').on('click', '.take-survey', takeSurvey)
-  $('#handlebar-target').on('click', '.answer-question', onAnswerQuestion)
+  $('#handlebar-target').on('click', '.answer-question-button', onAnswerQuestion)
   $('#handlebar-target').on('click', '.view-questions-button', onSurveyQuestions)
   $('#handlebar-target').on('click', '.get-data', onGetQuestionData)
   $('#handlebar-target').on('click', '.delete-question-button', onDeleteQuestion)
