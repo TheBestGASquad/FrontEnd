@@ -75,7 +75,7 @@ const signInFailure = (data) => {
 const signOutSuccess = (data) => {
   $('#sign-in-nav').show()
   $('#sign-up-nav').show()
-  $('a.dropdown-toggle').css('visibility', 'invisible')
+  $('a.dropdown-toggle').css('visibility', 'hidden')
   $('#indexOfSurveys').show()
   $('#indexOfUserSurveys').hide()
   $('#create-survey-nav').hide()
