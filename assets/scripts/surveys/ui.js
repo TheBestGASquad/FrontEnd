@@ -144,6 +144,13 @@ const deleteQuestionFailure = (questionId) => {
   $('.alert').text('Failed to Delete Question')
 }
 
+const editSurveyQuestionSuccess = (data) => {
+  store.questionId = data.question.id
+  api.editSurveyQuestion()
+  .then(showUserQuestionSuccess)
+  .catch(showUserQuestionFailure)
+}
+
 module.exports = {
   createSurveySuccess,
   createSurveyFailure,

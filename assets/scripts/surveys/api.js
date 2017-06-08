@@ -145,6 +145,28 @@ const getQuestionData = (id) => {
   })
 }
 
+const editSurveyQuestion = (questionId, data) => {
+  return $.ajax({
+    url: config.apiOrigin + '/questions/' + questionId,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
+const showerUserQuestion = (questionId, data) => {
+  return $.ajax({
+    url: config.apiOrigin + '/questions/' + questionId,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
 module.exports = {
   createSurvey,
   createQuestion,
@@ -157,5 +179,7 @@ module.exports = {
   show,
   destroy,
   getQuestionData,
-  deleteQuestion
+  deleteQuestion,
+  editSurveyQuestion,
+  showerUserQuestion
 }

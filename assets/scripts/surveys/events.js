@@ -88,6 +88,10 @@ const onGetQuestionData = function (event) {
     .catch(ui.getQuestionDataFailure)
 }
 
+// const onUpdateQuestion = function (event){
+//
+// }
+
 const onDeleteQuestion = function (event) {
   event.preventDefault()
   const questionId = $(event.target).attr('questionId')
