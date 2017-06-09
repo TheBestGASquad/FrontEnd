@@ -17,7 +17,6 @@ const signUpSuccess = (data) => {
   setTimeout(function () {
     $('.alert').text('')
   }, 4000)
-
   resetFormFields()
 }
 
@@ -37,7 +36,7 @@ const signInSuccess = (data) => {
   $('form#sign-up').hide()
   $('form#sign-in').hide()
   $('a.dropdown-toggle').css('visibility', 'visible')
-  $('#indexOfSurveys').hide()
+  $('#indexOfSurveys').show()
   $('#indexOfUserSurveys').show()
   $('#create-survey-nav').show()
   $('#handlebar-target').html('')
