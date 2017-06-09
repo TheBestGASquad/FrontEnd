@@ -53,6 +53,7 @@ const onUpdate = function (event) {
 }
 
 const onRevealAddQuestion = function (event) {
+  $('form#change-password').hide()
   $('form#create-survey').toggle()
   $('#handlebar-target').text('')
 }

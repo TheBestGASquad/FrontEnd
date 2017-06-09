@@ -57,6 +57,7 @@ const onChangePassword = function (event) {
 
 const onRevealChangePassword = function () {
   $('form').hide()
+  $('#content').hide()
   $('#handlebar-target').text('')
   $('form#change-password').animate({
     height: 'toggle'
