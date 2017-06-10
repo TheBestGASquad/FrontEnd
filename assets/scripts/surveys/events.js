@@ -1,3 +1,5 @@
+'use strict'
+
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
@@ -35,6 +37,7 @@ const onShowAuthUserSurveys = function (event) {
 
 const onDestroy = function (event) {
   event.preventDefault()
+  console.log('on destroy survey function fired')
   const surveyId = $(this).attr('surveyId')
   api.destroy(surveyId)
     .then(ui.destroySuccess)
@@ -88,17 +91,23 @@ const onGetQuestionData = function (event) {
     .catch(ui.getQuestionDataFailure)
 }
 
-// const onUpdateQuestion = function (event){
-//
-// }
-
 const onDeleteQuestion = function (event) {
   event.preventDefault()
   const questionId = $(event.target).attr('questionId')
-  console.log(questionId)
+  console.log('on delete question fired for question', questionId)
   api.deleteQuestion(questionId)
     .then(ui.deleteQuestionSuccess)
     .catch(ui.deleteQuestionFailure)
+}
+
+const onEditQuestion = function (event) {
+  event.preventDefault()
+  console.log('on edit question fired')
+  const questionId = $(event.target).attr('questionId')
+  console.log('on edit question fired for question', questionId)
+  api.editQuestion(questionId, data)
+    .then(ui.editQuestionSuccess)
+    .catch(ui.editQuestionFailure)
 }
 
 const addHandlers = () => {
@@ -108,18 +117,14 @@ const addHandlers = () => {
   $('#indexOfUserSurveys').on('click', onShowAuthUserSurveys)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#handlebar-target').on('click', '.delete-auth-survey-button', onDestroy)
-  // $('#content').on('click', '.show-questions-button', onGetQuestions)
-  // $('#handlebar-target').on('submit', '.update-survey-by-id-form', onUpdate)
-  // $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#handlebar-target').on('submit', '.update-survey', onUpdate)
   $('#handlebar-target').on('click', '.view-questions-button', onRevealAddQuestion)
   $('#handlebar-target').on('click', '.take-survey', takeSurvey)
   $('#handlebar-target').on('click', '.answer-question', onAnswerQuestion)
   $('#handlebar-target').on('click', '.view-questions-button', onSurveyQuestions)
   $('#handlebar-target').on('click', '.get-data', onGetQuestionData)
-  // $('#handlebar-target').on('click', '.delete-question-button', onDeleteQuestion)
-  // $('#content').on('click', '.delete-question-button', onDeleteQuestion)
-  $('#content').on('click', '.delete-question-button', onDeleteQuestion)
+  $('#content').on('click', '.delete-question-button', onDeleteQuestion),
+  $('#content').on('submit', '.edit-question', onEditQuestion)
 }
 
 module.exports = {

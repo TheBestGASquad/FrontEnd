@@ -1,3 +1,5 @@
+'use strict'
+
 const store = require('../store.js')
 const api = require('./api.js')
 // const showSurveyHB = require('../surveyHandlebars.handlebars')
@@ -63,6 +65,7 @@ const showAuthUserSurveysFailure = (data) => {
 }
 
 const destroySuccess = () => {
+  console.log('destroy survey success then show auth user surveys ')
   api.showAuthUserSurveys()
     .then(showAuthUserSurveysSuccess)
     .catch(showAuthUserSurveysFailure)
@@ -93,6 +96,7 @@ const takeSurveyFailure = (data) => {
   $('.alert').text('Unable to Return Questions From Server')
 }
 
+// get survey questions
 const surveyQuestionsSuccess = (data) => {
   const editableSurvey = editableSurveyHB({ questions: data.question })
   $('#handlebar-target').html(editableSurvey)
@@ -102,6 +106,7 @@ const surveyQuestionsFailure = (data) => {
   $('.alert').text('Unable to Return Questions From Server')
 }
 
+// answer survey question
 const answerSuccess = (data) => {
   const targ = document.getElementById(data._id)
   $(targ).hide()
@@ -132,8 +137,6 @@ const getQuestionDataFailure = (data) => {
 }
 
 const deleteQuestionSuccess = () => {
-  // const targ = document.getElementById(data._id)
-  // $(targ).hide()
   api.showAuthUserSurveys()
     .then(showAuthUserSurveysSuccess)
     .catch(showAuthUserSurveysFailure)
@@ -144,12 +147,16 @@ const deleteQuestionFailure = (questionId) => {
   $('.alert').text('Failed to Delete Question')
 }
 
-const editSurveyQuestionSuccess = (data) => {
-  store.questionId = data.question.id
-  api.editSurveyQuestion()
+const editQuestionSuccess = (data) => {
+  console.log('edit question success fired for question', question.id)
+  // store.questionId = data.question.id
+  api.showUserQuestion()
   .then(showUserQuestionSuccess)
   .catch(showUserQuestionFailure)
 }
+
+const editQuestionFailure = () =>
+    $('.alert').text('Failed to Update Question')
 
 module.exports = {
   createSurveySuccess,
@@ -172,5 +179,7 @@ module.exports = {
   getQuestionDataSuccess,
   getQuestionDataFailure,
   deleteQuestionSuccess,
-  deleteQuestionFailure
+  deleteQuestionFailure,
+  editQuestionSuccess,
+  editQuestionFailure
 }
