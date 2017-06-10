@@ -121,9 +121,8 @@ const deleteQuestion = (questionId) => {
   })
 }
 
-const update = (surveyId, data) => {
+const update = (surveyId) => {
   console.log('update survey name function fired this is surveyId', surveyId)
-  console.log('update survey name function this is data', data)
   // ('I worked')
   return $.ajax({
     url: config.apiOrigin + '/surveys/' + surveyId,
@@ -131,7 +130,6 @@ const update = (surveyId, data) => {
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: data
   })
 }
 
@@ -160,7 +158,7 @@ const getQuestionData = (id) => {
 
 const editQuestion = (questionId, data) => {
   console.log('edit one question function fired this is questionId', questionId)
-  console.log('edit one question fucntion this is data', data)
+  console.log('edit question function this is data', data)
   return $.ajax({
     url: config.apiOrigin + '/questions/' + questionId,
     method: 'PATCH',

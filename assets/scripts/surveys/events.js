@@ -104,6 +104,7 @@ const onEditQuestion = function (event) {
   event.preventDefault()
   console.log('on edit question fired')
   const questionId = $(event.target).attr('questionId')
+  const data = getFormFields(event.target)
   console.log('on edit question fired for question', questionId)
   api.editQuestion(questionId, data)
     .then(ui.editQuestionSuccess)
