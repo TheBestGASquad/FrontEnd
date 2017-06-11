@@ -2,7 +2,7 @@
 
 const config = {
   apiOrigins: {
-    production: 'https://radiant-plains-78167.herokuapp.com'
+    production: 'https://mighty-temple-35862.herokuapp.com'
     // development: 'http://localhost:4741'
   }
 }
