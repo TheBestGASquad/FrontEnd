@@ -24,25 +24,28 @@ const createSurveySuccess = (response) => {
   const showQuestionHtml = showQuestionHeaderHB({ surveys: response })
   $('.alert').text('')
   $('form#create-survey').hide()
+  $('form#change-password').hide()
   $('form#create-question').show()
   $('div#content').empty()
   $('div#content').show()
   $('#content').html(showQuestionHtml)
   $('#handlebar-target').html('')
   $('.alert').text('You Have Created a New Survey Titled ' + response.survey.title)
- setTimeout(function () { $('.alert').text('') }, 4000)
- resetSurveyFormFields()
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
-const createSurveyFailure = () => {
+const createSurveyFailure = (error) => {
   $('.alert').text('You have Failed to Create a New Survey')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
 const createQuestionSuccess = (response) => {
   $('.alert').text('You Have Added The Question "' + response.question.prompt + '" to This Survey')
+  setTimeout(function () { $('.alert').text('') }, 4000)
   const showQuestionHtml = showQuestionHB({ questions: response })
   $('#content').append(showQuestionHtml)
-  document.getElementById('create-question').reset()
   resetSurveyFormFields()
 }
 
@@ -51,15 +54,22 @@ const indexOfSurveysSuccess = (data) => {
   $('form').hide()
   if (data.surveys.length === 0) {
     $('.alert').text('There are no Surveys to Take.')
+    setTimeout(function () { $('.alert').text('') }, 4000)
+    resetSurveyFormFields()
   }
+
   const unauthUserSurveyHtml = unauthUserSurveyHB({ surveys: data.surveys })
   $('#handlebar-target').html(unauthUserSurveyHtml)
   $('div#content').empty()
   $('.alert').text('')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
 const indexOfSurveysFailure = (surveyId) => {
   $('.alert').text('Unable to Retrieve Data.')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
 const showAuthUserSurveysSuccess = (data) => {
@@ -80,15 +90,18 @@ const showAuthUserSurveysFailure = (data) => {
 }
 
 const destroySuccess = () => {
-  console.log('destroy survey success then show auth user surveys ')
   api.showAuthUserSurveys()
     .then(showAuthUserSurveysSuccess)
     .catch(showAuthUserSurveysFailure)
   $('.alert').text('Successful Survey Deletion')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
 const destroyFailure = (data) => {
   $('.alert').text('Survey Deletion Failed')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
 const updateSuccess = (surveyId) => {
@@ -106,16 +119,20 @@ const updateFailure = (data) => {
 const takeSurveySuccess = (data) => {
   if (data.question.length === 0) {
     $('.alert').text('There are no Questions to Answer.')
+    setTimeout(function () { $('.alert').text('') }, 4000)
+    resetSurveyFormFields()
   }
+
   const answerableSurvey = answerableSurveyHB({ questions: data.question })
   $('#handlebar-target').html(answerableSurvey)
 }
 
 const takeSurveyFailure = (data) => {
   $('.alert').text('Unable to Return Questions From Server')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
-// get survey questions
 const surveyQuestionsSuccess = (data) => {
   const editableSurvey = editableSurveyHB({ questions: data.question })
   $('#handlebar-target').html(editableSurvey)
@@ -123,17 +140,22 @@ const surveyQuestionsSuccess = (data) => {
 
 const surveyQuestionsFailure = (data) => {
   $('.alert').text('Unable to Return Questions From Server')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
-// answer survey question
 const answerSuccess = (data) => {
   const targ = document.getElementById(data._id)
   $(targ).hide()
   $('.alert').text('Your Answer has Been Logged!')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
 const answerFailure = (data) => {
   $('.alert').text('Failure to Log Answers')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
 const extractVal = (data) => {
@@ -149,10 +171,14 @@ const getQuestionDataSuccess = (data) => {
     extractVal(data.question.results[i]) === true ? yes++ : no++
   }
   $('.alert').text(`The question '${data.question.prompt}' has been answered ${data.question.results.length} times. It got a yes ${yes} times and a no ${no} times.`)
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
 const getQuestionDataFailure = (data) => {
   $('.alert').text('Failure to Return Question')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
 const deleteQuestionSuccess = () => {

@@ -4,6 +4,11 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 
+const validate = (input) => {
+  if (/[a-z]/.test(input.toLowerCase()) === false) { return false }
+  return true
+}
+
 const onCreateSurvey = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -37,7 +42,6 @@ const onShowAuthUserSurveys = function (event) {
 
 const onDestroy = function (event) {
   event.preventDefault()
-  console.log('on destroy survey function fired')
   const surveyId = $(this).attr('surveyId')
   api.destroy(surveyId)
     .then(ui.destroySuccess)
@@ -94,6 +98,7 @@ const onGetQuestionData = function (event) {
     .then(ui.getQuestionDataSuccess)
     .catch(ui.getQuestionDataFailure)
 }
+
 
 const onDeleteQuestion = function (event) {
   event.preventDefault()
