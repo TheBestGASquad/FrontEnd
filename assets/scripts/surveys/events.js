@@ -51,7 +51,7 @@ const onDestroy = function (event) {
 const onUpdate = function (event) {
   event.preventDefault()
   const surveyId = $(this).attr('surveyId')
-  const data = getFormFields(event.target)
+  const data = getFormFields(event.target)run
   if (validate(data.survey.title) === true) {
     api.update(surveyId, data)
       .then(ui.updateSuccess)
