@@ -103,7 +103,7 @@ const destroy = function (id) {
   })
 }
 
-const onDeleteQuestion = (id) => {
+const deleteQuestion = (id) => {
   return $.ajax({
     url: config.apiOrigin + '/questions/' + id,
     method: 'DELETE',
