@@ -196,15 +196,22 @@ const addQuestionFailure = () => {
 }
 
 
-// const showUserQuestionSuccess = (data) => {
-//   $('#content').hide()
-//   $('form').hide()
-//   $('.alert').text('')
-//   const editQuestionHtml = showQuestionHB({ prompt: data.prompt})
-//   $('#content').html(editQuestionHtml)
-// }
-//
-// const showUserQuestionFailure = (data) => {}
+const showUserSurveyTakenSuccess = (data) => {
+  $('#content').hide()
+  $('form').hide()
+  $('.alert').text('')
+  const answerableSurveyHtml = authUserSurveyHB({ surveys: data.survey })
+  $('#handlebar-target').html(answerableSurveyHtml)
+  $('.alert').text('')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
+}
+
+const showUserSurveyTakenFailure = (data) => {
+  $('.alert').text('Unable to Retrieve Data.')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
+}
 
 
 module.exports = {
@@ -230,7 +237,7 @@ module.exports = {
   deleteQuestionSuccess,
   deleteQuestionFailure,
   editQuestionSuccess,
-  editQuestionFailure
-  // showUserQuestionSuccess,
-  // showUserQuestionFailure
+  editQuestionFailure,
+  showUserSurveyTakenSuccess,
+  showUserSurveyTakenFailure
 }

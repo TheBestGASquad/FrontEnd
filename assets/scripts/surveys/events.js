@@ -133,11 +133,26 @@ const onAddQuestion = function (event) {
     .catch(ui.addQuestionFailure)
 }
 
+const onShowUserSurveyTaken = function (event) {
+  event.preventDefault()
+  const userId = $(this).attr('userId')
+  api.showAuthUserSurveys(userId)
+  console.log('on show user survey taken userId is', userId)
+  const surveyId = $(this).attr('surveyId')
+  console.log('on show user survey taken surveyId is', surveyId)
+  const data = getFormFields(event.target)
+  // console.log('on show user survey taken data is', data)
+  api.showUserSurveyTaken(surveyId)
+    .then(ui.showUserSurveyTakenSuccess)
+    .catch(ui.showUserSurveyTakenFailure)
+}
+
 const addHandlers = () => {
   $('#create-survey').on('submit', onCreateSurvey)
   $('#create-question').on('submit', onCreateQuestion)
   $('#indexOfSurveys').on('click', onIndexOfSurveys)
   $('#indexOfUserSurveys').on('click', onShowAuthUserSurveys)
+  $('#indexOfSurveysTaken').on('click', onShowUserSurveyTaken)
   $('#create-survey-nav').on('click', onRevealAddQuestion)
   $('#handlebar-target').on('click', '.delete-auth-survey-button', onDestroy)
   $('#handlebar-target').on('submit', '.update-survey', onUpdate)

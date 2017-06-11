@@ -192,17 +192,17 @@ const addQuestion = (surveyId, data) => {
   })
 }
 
-// const showUserQuestion = (questionId, data) => {
-//   console.log('show user question function fired this is questionId', questionId)
-//   return $.ajax({
-//     url: config.apiOrigin + '/questions/' + questionId,
-//     method: 'GET',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     },
-//     data: data
-//   })
-// }
+const showUserSurveyTaken = (surveyId, data) => {
+  console.log('show user question function fired this is surveyId', surveyId)
+  return $.ajax({
+    url: config.apiOrigin + '/user-surveys/' + surveyId,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
 
 module.exports = {
   createSurvey,
@@ -217,6 +217,6 @@ module.exports = {
   getQuestionData,
   deleteQuestion,
   editQuestion,
-  // showUserQuestion,
+  showUserSurveyTaken,
   addQuestion
 }
