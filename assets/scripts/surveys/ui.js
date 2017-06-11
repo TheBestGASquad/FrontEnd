@@ -10,6 +10,15 @@ const answerableSurveyHB = require('../answerableSurvey.handlebars')
 const editableSurveyHB = require('../editableSurveys.handlebars')
 const showQuestionHeaderHB = require('../questionsheaderHandlebars.handlebars')
 
+const resetSurveyFormFields = () => {
+  $('form#sign-up').trigger('reset')
+  $('form#sign-in').trigger('reset')
+  $('form#sign-out').trigger('reset')
+  $('form#change-password').trigger('reset')
+  $('form#create-survey').trigger('reset')
+  $('form#create-question').trigger('reset')
+}
+
 const createSurveySuccess = (response) => {
   store.surveyID = response.survey.id
   const showQuestionHtml = showQuestionHeaderHB({ surveys: response })
@@ -21,7 +30,8 @@ const createSurveySuccess = (response) => {
   $('#content').html(showQuestionHtml)
   $('#handlebar-target').html('')
   $('.alert').text('You Have Created a New Survey Titled ' + response.survey.title)
-  document.getElementById('create-survey').reset()
+ setTimeout(function () { $('.alert').text('') }, 4000)
+ resetSurveyFormFields()
 }
 
 const createSurveyFailure = () => {
@@ -33,6 +43,7 @@ const createQuestionSuccess = (response) => {
   const showQuestionHtml = showQuestionHB({ questions: response })
   $('#content').append(showQuestionHtml)
   document.getElementById('create-question').reset()
+  resetSurveyFormFields()
 }
 
 const indexOfSurveysSuccess = (data) => {
@@ -58,10 +69,14 @@ const showAuthUserSurveysSuccess = (data) => {
   const answerableSurveyHtml = authUserSurveyHB({ surveys: data.survey })
   $('#handlebar-target').html(answerableSurveyHtml)
   $('.alert').text('')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
 const showAuthUserSurveysFailure = (data) => {
   $('.alert').text('Unable to Retrieve Data.')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+  resetSurveyFormFields()
 }
 
 const destroySuccess = () => {
@@ -80,9 +95,13 @@ const updateSuccess = (surveyId) => {
   api.showAuthUserSurveys()
     .then(showAuthUserSurveysSuccess)
     .catch(showAuthUserSurveysFailure)
+  resetSurveyFormFields()
 }
 
-const updateFailure = (data) => {}
+const updateFailure = (data) => {
+  $('.alert').text('Form cannot be empty')
+  setTimeout(function () { $('.alert').text('') }, 4000)
+}
 
 const takeSurveySuccess = (data) => {
   if (data.question.length === 0) {
@@ -148,16 +167,29 @@ const deleteQuestionFailure = (questionId) => {
 }
 
 const editQuestionSuccess = (data) => {
-  console.log('edit question success fired for question', question.id)
-  store.questionId = data.question.id
-  api.showUserQuestion()
-  .then(showUserQuestionSuccess)
-  .catch(showUserQuestionFailure)
+  // console.log('edit question success fired for question', question.id)
+    api.surveyQuestions()
+      .then(surveyQuestionsSuccess)
+      .catch(surveyQuestionsFailure)
+    resetSurveyFormFields()
 }
 
-const editQuestionFailure = (err) =>
-console.log('edit question failure fired this is error', err)
-    $('.alert').text('Failed to Update Question')
+const editQuestionFailure = () => {
+// console.log('edit question failure data is', data)
+resetSurveyFormFields()
+  $('.alert').text('Failed to Update Question')
+}
+
+// const showUserQuestionSuccess = (data) => {
+//   $('#content').hide()
+//   $('form').hide()
+//   $('.alert').text('')
+//   const editQuestionHtml = showQuestionHB({ prompt: data.prompt})
+//   $('#content').html(editQuestionHtml)
+// }
+//
+// const showUserQuestionFailure = (data) => {}
+
 
 module.exports = {
   createSurveySuccess,
@@ -183,4 +215,6 @@ module.exports = {
   deleteQuestionFailure,
   editQuestionSuccess,
   editQuestionFailure
+  // showUserQuestionSuccess,
+  // showUserQuestionFailure
 }

@@ -158,7 +158,7 @@ const getQuestionData = (id) => {
 
 const editQuestion = (questionId, data) => {
   console.log('api.js edit one question function fired this is questionId', questionId)
-  console.log('api.js edit question function this is data', data)
+  console.log('edit question data', data)
   return $.ajax({
     url: config.apiOrigin + '/questions/' + questionId,
     method: 'PATCH',

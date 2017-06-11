@@ -111,13 +111,13 @@ const onEditQuestion = function (event) {
   const data = getFormFields(event.target)
   console.log('events.js on edit question fired for question', questionId)
   console.log('events.js on edit question function data', data)
-  if (data.question.prompt === true) {
+  // if (validate(data.question.prompt) === true) {
     api.editQuestion(questionId, data)
       .then(ui.editQuestionSuccess)
       .catch(ui.editQuestionFailure)
-  } else {
-    ui.editQuestionFailure()
-  }
+  // } else {
+  //   ui.editQuestionFailure()
+  // }
 }
 
 const addHandlers = () => {
