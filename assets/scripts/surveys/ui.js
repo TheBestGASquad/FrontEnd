@@ -181,22 +181,66 @@ const getQuestionDataFailure = (data) => {
   resetSurveyFormFields()
 }
 
-const deleteQuestionSuccess = (data) => {
-  const targ = document.getElementById(data._id)
-  $(targ).hide()
+const deleteQuestionSuccess = () => {
+  api.showAuthUserSurveys()
+    .then(showAuthUserSurveysSuccess)
+    .catch(showAuthUserSurveysFailure)
   $('.alert').text('Question Deleted')
+}
+
+const deleteQuestionFailure = (questionId) => {
+  $('.alert').text('Failed to Delete Question')
+}
+
+const editQuestionSuccess = (data) => {
+  // console.log('edit question success fired for question', question.id)
+    api.surveyQuestions()
+      .then(surveyQuestionsSuccess)
+      .catch(surveyQuestionsFailure)
+    resetSurveyFormFields()
+}
+
+const editQuestionFailure = () => {
+// console.log('edit question failure data is', data)
+resetSurveyFormFields()
+  $('.alert').text('Failed to Update Question')
+}
+
+const addQuestionSuccess = (response) => {
+  console.log('add question success this is response.question', response.question)
+  // store.surveyID = response.question.prompt
+  const showUserQuestionHtml = authUserSurveyHB({ questions: response.question.prompt })
+  $('#content').append(showUserQuestionHtml)
+  document.getElementById('add-question').reset()
+  resetSurveyFormFields()
+}
+
+const addQuestionFailure = () => {
+  console.log('add question failure')
+  resetSurveyFormFields()
+  $('.alert').text('Failed to Add a Question')
+}
+
+
+const showUserSurveyTakenSuccess = (data) => {
+  $('#content').hide()
+  $('form').hide()
+  $('.alert').text('')
+  const answerableSurveyHtml = authUserSurveyHB({ surveys: data.survey })
+  $('#handlebar-target').html(answerableSurveyHtml)
+  $('.alert').text('')
   setTimeout(function () { $('.alert').text('') }, 4000)
   resetSurveyFormFields()
 }
 
-const deleteQuestionFailure = (data) => {
-  $('.alert').text('Failed to Delete Question')
+const showUserSurveyTakenFailure = (data) => {
+  $('.alert').text('Unable to Retrieve Data.')
   setTimeout(function () { $('.alert').text('') }, 4000)
   resetSurveyFormFields()
 }
+
 
 module.exports = {
-  resetSurveyFormFields,
   createSurveySuccess,
   createSurveyFailure,
   createQuestionSuccess,
@@ -217,5 +261,9 @@ module.exports = {
   getQuestionDataSuccess,
   getQuestionDataFailure,
   deleteQuestionSuccess,
-  deleteQuestionFailure
+  deleteQuestionFailure,
+  editQuestionSuccess,
+  editQuestionFailure,
+  showUserSurveyTakenSuccess,
+  showUserSurveyTakenFailure
 }

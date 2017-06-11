@@ -9,27 +9,29 @@ auth-user-content
       <th>{{survey.title}}</th>
     </tr>
   </thead> -->
-{{#each surveys as |survey|}}
-      <tr>
-        <td class="prompt-title">{{survey.title}}</td>
-        <td>{{survey.owner}}</td>
-        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-info view-questions-button">View Survey</button></td>
-        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger delete-auth-survey-button">Delete</button></td>
-      <td>
-        <form class="update-survey" surveyId="{{survey.id}}">
-      <fieldset>
-        <input type="text" name="survey[title]" placeholder="Change Title">
-        <input type="submit" class="btn btn-info" name="submit" value="Update Survey">
-      </fieldset>
-    </form>
-      </td>
-        <!-- <td><form class="update-survey-button" surveyId="{{survey.id}}">
-            <input type="text" id="rename-auth-survey-by-id-button" name="survey[title]">
-            <input type="hidden" name="id" value="{{survey.id}}">
-        <button class="btn btn-info view-questions-button" type="submit">Rename</button>
+  {{#each surveys as |survey|}}
+        <tr>
+          <td class="prompt-title">{{survey.title}}</td>
+          <td>{{survey.owner}}</td>
+          <td><button surveyId="{{survey.id}}" type="click" class="btn btn-info view-questions-button">View Survey</button></td>
+          <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger delete-auth-survey-button">Delete</button></td>
+        <td>
+          <form class="update-survey" surveyId="{{survey.id}}">
+        <fieldset>
+          <input type="text" name="survey[title]" placeholder="Change Title">
+          <input type="submit" class="btn btn-info" name="submit" value="Update Survey">
+        </fieldset>
       </form>
-    </td> -->
-      </tr>
-  {{/each}}
-</table>
-</html>
+        </td>
+        <td>
+          <form class="add-question" surveyId="{{survey.id}}">
+        <fieldset>
+          <input type="text" name="question[prompt]" placeholder="New Question">
+          <input type="submit" class="btn btn-success" name="submit" value="Add Question">
+        </fieldset>
+      </form>
+        </td>
+        </tr>
+    {{/each}}
+  </table>
+  </html>
