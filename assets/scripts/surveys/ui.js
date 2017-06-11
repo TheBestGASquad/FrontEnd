@@ -180,6 +180,22 @@ resetSurveyFormFields()
   $('.alert').text('Failed to Update Question')
 }
 
+const addQuestionSuccess = (response) => {
+  console.log('add question success this is response.question', response.question)
+  // store.surveyID = response.question.prompt
+  const showUserQuestionHtml = authUserSurveyHB({ questions: response.question.prompt })
+  $('#content').append(showUserQuestionHtml)
+  document.getElementById('add-question').reset()
+  resetSurveyFormFields()
+}
+
+const addQuestionFailure = () => {
+  console.log('add question failure')
+  resetSurveyFormFields()
+  $('.alert').text('Failed to Add a Question')
+}
+
+
 // const showUserQuestionSuccess = (data) => {
 //   $('#content').hide()
 //   $('form').hide()

@@ -120,6 +120,19 @@ const onEditQuestion = function (event) {
   // }
 }
 
+const onAddQuestion = function (event) {
+  event.preventDefault(event)
+  // const userId = $(this).attr('userId')
+  api.showAuthUserSurveys(data)
+  const surveyId = $(this).attr('surveyId')
+  const data = getFormFields(event.target)
+  console.log('on add question function fired this is surveyId', surveyId)
+  console.log('on add question this is data', data)
+  api.addQuestion(surveyId, data)
+    .then(ui.addQuestionSucess)
+    .catch(ui.addQuestionFailure)
+}
+
 const addHandlers = () => {
   $('#create-survey').on('submit', onCreateSurvey)
   $('#create-question').on('submit', onCreateQuestion)
@@ -135,6 +148,7 @@ const addHandlers = () => {
   $('#handlebar-target').on('click', '.get-data', onGetQuestionData)
   $('#content').on('click', '.delete-question-button', onDeleteQuestion),
   $('#content').on('submit', '.edit-question', onEditQuestion)
+  $('#handlebar-target').on('submit', '.add-question', onAddQuestion)
 }
 
 module.exports = {

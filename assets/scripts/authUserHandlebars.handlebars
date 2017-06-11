@@ -23,12 +23,14 @@ auth-user-content
       </fieldset>
     </form>
       </td>
-        <!-- <td><form class="update-survey-button" surveyId="{{survey.id}}">
-            <input type="text" id="rename-auth-survey-by-id-button" name="survey[title]">
-            <input type="hidden" name="id" value="{{survey.id}}">
-        <button class="btn btn-info view-questions-button" type="submit">Rename</button>
-      </form>
-    </td> -->
+      <td>
+        <form class="add-question" surveyId="{{survey.id}}">
+      <fieldset>
+        <input type="text" name="question[prompt]" placeholder="New Question">
+        <input type="submit" class="btn btn-success" name="submit" value="Add Question">
+      </fieldset>
+    </form>
+      </td>
       </tr>
   {{/each}}
 </table>
