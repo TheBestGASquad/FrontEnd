@@ -75,7 +75,7 @@ const showAuthUserSurveys = (data) => {
 }
 
 const surveyQuestions = function (id) {
-  console.log('get one survey question function fired this is id', id)
+  console.log('show one surveys questions function fired this is id', id)
   // (id)
   return $.ajax({
     url: config.apiOrigin + '/questions',
@@ -157,15 +157,19 @@ const getQuestionData = (id) => {
 }
 
 const editQuestion = (questionId, data) => {
-  console.log('edit one question function fired this is questionId', questionId)
-  console.log('edit question function this is data', data)
+  console.log('api.js edit one question function fired this is questionId', questionId)
+  console.log('api.js edit question function this is data', data)
   return $.ajax({
     url: config.apiOrigin + '/questions/' + questionId,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: data
+    data: {
+      'question': {
+        'prompt': data
+      }
+    }
   })
 }
 

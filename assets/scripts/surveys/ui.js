@@ -149,13 +149,14 @@ const deleteQuestionFailure = (questionId) => {
 
 const editQuestionSuccess = (data) => {
   console.log('edit question success fired for question', question.id)
-  // store.questionId = data.question.id
+  store.questionId = data.question.id
   api.showUserQuestion()
   .then(showUserQuestionSuccess)
   .catch(showUserQuestionFailure)
 }
 
-const editQuestionFailure = () =>
+const editQuestionFailure = (err) =>
+console.log('edit question failure fired this is error', err)
     $('.alert').text('Failed to Update Question')
 
 module.exports = {

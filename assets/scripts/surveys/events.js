@@ -48,9 +48,13 @@ const onUpdate = function (event) {
   event.preventDefault()
   const surveyId = $(this).attr('surveyId')
   const data = getFormFields(event.target)
-  api.update(surveyId, data)
-    .then(ui.updateSuccess)
-    .catch(ui.updateFailure)
+  if (validate(data.survey.title) === true) {
+    api.update(surveyId, data)
+      .then(ui.updateSuccess)
+      .catch(ui.updateFailure)
+  } else {
+    ui.updateFailure()
+  }
 }
 
 const onRevealAddQuestion = function (event) {
@@ -105,10 +109,15 @@ const onEditQuestion = function (event) {
   console.log('on edit question fired')
   const questionId = $(event.target).attr('questionId')
   const data = getFormFields(event.target)
-  console.log('on edit question fired for question', questionId)
-  api.editQuestion(questionId, data)
-    .then(ui.editQuestionSuccess)
-    .catch(ui.editQuestionFailure)
+  console.log('events.js on edit question fired for question', questionId)
+  console.log('events.js on edit question function data', data)
+  if (data.question.prompt === true) {
+    api.editQuestion(questionId, data)
+      .then(ui.editQuestionSuccess)
+      .catch(ui.editQuestionFailure)
+  } else {
+    ui.editQuestionFailure()
+  }
 }
 
 const addHandlers = () => {
