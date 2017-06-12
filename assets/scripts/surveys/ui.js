@@ -193,7 +193,6 @@ const deleteQuestionFailure = (questionId) => {
 }
 
 const editQuestionSuccess = (data) => {
-  // console.log('edit question success fired for question', question.id)
     api.surveyQuestions()
       .then(surveyQuestionsSuccess)
       .catch(surveyQuestionsFailure)
@@ -201,13 +200,11 @@ const editQuestionSuccess = (data) => {
 }
 
 const editQuestionFailure = () => {
-// console.log('edit question failure data is', data)
 resetSurveyFormFields()
   $('.alert').text('Failed to Update Question')
 }
 
 const addQuestionSuccess = (response) => {
-  console.log('add question success this is response.question', response.question)
   // store.surveyID = response.question.prompt
   const showUserQuestionHtml = authUserSurveyHB({ questions: response.question.prompt })
   $('#content').append(showUserQuestionHtml)
@@ -216,7 +213,6 @@ const addQuestionSuccess = (response) => {
 }
 
 const addQuestionFailure = () => {
-  console.log('add question failure')
   resetSurveyFormFields()
   $('.alert').text('Failed to Add a Question')
 }
@@ -238,7 +234,6 @@ const showUserSurveyTakenFailure = (data) => {
   setTimeout(function () { $('.alert').text('') }, 4000)
   resetSurveyFormFields()
 }
-
 
 module.exports = {
   createSurveySuccess,
@@ -265,5 +260,7 @@ module.exports = {
   editQuestionSuccess,
   editQuestionFailure,
   showUserSurveyTakenSuccess,
-  showUserSurveyTakenFailure
+  showUserSurveyTakenFailure,
+  addQuestionSuccess,
+  addQuestionFailure
 }

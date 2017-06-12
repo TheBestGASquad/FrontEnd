@@ -104,7 +104,6 @@ const onGetQuestionData = function (event) {
 const onDeleteQuestion = function (event) {
   event.preventDefault()
   const questionId = $(event.target).attr('questionId')
-  console.log('on delete question fired for question', questionId)
   api.deleteQuestion(questionId)
     .then(ui.deleteQuestionSuccess)
     .catch(ui.deleteQuestionFailure)
@@ -112,11 +111,8 @@ const onDeleteQuestion = function (event) {
 
 const onEditQuestion = function (event) {
   event.preventDefault()
-  console.log('on edit question fired')
   const questionId = $(event.target).attr('questionId')
   const data = getFormFields(event.target)
-  console.log('events.js on edit question fired for question', questionId)
-  console.log('events.js on edit question function data', data)
   // if (validate(data.question.prompt) === true) {
     api.editQuestion(questionId, data)
       .then(ui.editQuestionSuccess)
@@ -133,8 +129,6 @@ const onAddQuestion = function (event) {
   const surveyId = $(this).attr('surveyId')
   let data = getFormFields(event.target)
   // data = data.questions
-  // console.log('on add question function fired this is surveyId', surveyId)
-  // console.log('on add question this is data', data)
   api.addQuestion(surveyId, data)
     .then(ui.addQuestionSucess)
     .catch(ui.addQuestionFailure)
@@ -144,11 +138,8 @@ const onShowUserSurveyTaken = function (event) {
   event.preventDefault()
   const userId = $(this).attr('userId')
   api.showAuthUserSurveys(userId)
-  console.log('on show user survey taken userId is', userId)
   const surveyId = $(this).attr('surveyId')
-  console.log('on show user survey taken surveyId is', surveyId)
   const data = getFormFields(event.target)
-  // console.log('on show user survey taken data is', data)
   api.showUserSurveyTaken(surveyId)
     .then(ui.showUserSurveyTakenSuccess)
     .catch(ui.showUserSurveyTakenFailure)

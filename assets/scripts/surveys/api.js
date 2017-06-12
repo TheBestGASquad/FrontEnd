@@ -146,8 +146,6 @@ const getQuestionData = (id) => {
   })
 }
 const editQuestion = (questionId, data) => {
-  console.log('api.js edit one question function fired this is questionId', questionId)
-  console.log('edit question data', data)
   return $.ajax({
     url: config.apiOrigin + '/questions/' + questionId,
     method: 'PATCH',
@@ -163,7 +161,6 @@ const editQuestion = (questionId, data) => {
 }
 
 const addQuestion = (surveyId, data) => {
-  console.log(data.question.prompt)
   return $.ajax({
     url: config.apiOrigin + '/questions/',
     method: 'POST',
@@ -181,7 +178,6 @@ const addQuestion = (surveyId, data) => {
 
 
 const showUserSurveyTaken = (surveyId, data) => {
-  console.log('show user question function fired this is surveyId', surveyId)
   return $.ajax({
     url: config.apiOrigin + '/user-surveys/' + surveyId,
     method: 'GET',
