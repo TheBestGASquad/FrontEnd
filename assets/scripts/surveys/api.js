@@ -177,6 +177,7 @@ const addQuestion = (surveyId, data) => {
       }
     }
   })
+}
 
 
 const showUserSurveyTaken = (surveyId, data) => {
