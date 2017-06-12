@@ -17,9 +17,6 @@ const resetSurveyFormFields = () => {
   $('form#change-password').trigger('reset')
   $('form#create-survey').trigger('reset')
   $('form#create-question').trigger('reset')
-  $('form#add-question').trigger('reset')
-  $('form#update-survey').trigger('reset')
-
 }
 
 const createSurveySuccess = (response) => {
