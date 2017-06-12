@@ -46,8 +46,9 @@ const signInSuccess = (data) => {
   $('form#sign-up').hide()
   $('form#sign-in').hide()
   $('a.dropdown-toggle').css('visibility', 'visible')
-  $('#indexOfSurveys').hide()
+  // $('#indexOfSurveys').hide()
   $('#indexOfUserSurveys').show()
+  $('indexOfSurveysTaken').show()
   $('#create-survey-nav').show()
   $('#handlebar-target').html('')
   setTimeout(function () {
