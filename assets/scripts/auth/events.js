@@ -5,6 +5,13 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 
+const resetFormFields = () => {
+  $('form#sign-up').trigger('reset')
+  $('form#sign-in').trigger('reset')
+  $('form#create-survey').trigger('reset')
+  $('form#create-question').trigger('reset')
+}
+
 const onRevealSignUp = function () {
   $('form').hide()
   $('#handlebar-target').text('')
@@ -12,6 +19,7 @@ const onRevealSignUp = function () {
     height: 'toggle'
   }, 200, function () {})
   $('form#sign-in').hide()
+  resetFormFields()
 }
 
 const onRevealSignIn = function () {
@@ -21,6 +29,7 @@ const onRevealSignIn = function () {
     height: 'toggle'
   }, 200, function () {})
   $('form#sign-up').hide()
+  resetFormFields()
 }
 
 const onSignUp = function (event) {
@@ -64,6 +73,7 @@ const onRevealChangePassword = function () {
   }, 200, function () {})
   // $('form#sign-up').hide()
   // $('form#sign-in').hide()
+  resetFormFields()
 }
 
 const addHandlers = () => {

@@ -65,6 +65,9 @@ const onRevealAddQuestion = function (event) {
   $('form#change-password').hide()
   $('form#create-survey').toggle()
   $('#handlebar-target').text('')
+  $('form#create-survey').trigger('reset')
+  $('form#create-question').trigger('reset')
+  $('form#change-password').trigger('reset')
 }
 
 const takeSurvey = function (event) {
