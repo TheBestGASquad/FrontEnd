@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Survey Lemur</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags unless you know what you are doing -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="./assets/styles/index.scss">
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
+
+  <!-- Do not add `script` tags unless you know what you are doing -->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+</head>
+
+<body>
+
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Survey Lemur</a>
+      </div>
+      <div id="navbar">
+        <ul class="nav navbar-nav">
+          <li><button type="button" class="btn btn-default navbar-btn" id='sign-up-nav'>Sign Up</button></li>
+          <li><button type="button" class="btn btn-default navbar-btn" id='sign-in-nav'>Sign In</button></li>
+          <li> <button type="button" class="btn btn-default navbar-btn" id='create-survey-nav'>Create Survey</button></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li id='sign-out'><a href="#">Sign Out</a></li>
+              <li id='nav-change-password'><a href="#">Change Password</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="navbar-header show-buttons">
+          <button id="indexOfSurveys" class="btn btn-default navbar-btn right">Show All Surveys</button>
+          <button id="indexOfUserSurveys" class="btn btn-default navbar-btn right">Show My Surveys</button>
+          <button id="indexOfSurveysTaken" class="btn btn-default navbar-btn right">Show Surveys Taken</button>
+        </div>
+      </div>
+    </div>
+    <!--/.nav-collapse -->
+  </nav>
+
+  <!-- Begin page content -->
+  <div class="container">
+    <form id="sign-up">
+      <input class="form-control" name="credentials[email]" type="text" placeholder="Email" onFocus="this.select()">
+      <input class="form-control" name="credentials[password]" type="password" placeholder="Password" onFocus="this.select()">
+      <input class="form-control" name="credentials[password_confirmation]" type="password" placeholder="Password" onFocus="this.select()">
+      <input class="submit" type="submit" name="submit" value="Sign up">
+    </form>
+
+    <form id="sign-in">
+      <input class="form-control" name="credentials[email]" type="text" placeholder="Email" onFocus="this.select()">
+      <input class="form-control" name="credentials[password]" type="password" placeholder="Password" onFocus="this.select()">
+      <input class="submit" type="submit" name="submit" value="Sign in!">
+    </form>
+
+    <form id="create-survey">
+      <!-- <fieldset> -->
+        <input class="form-control" name="survey[title]" type="text" placeholder="Survey Title" onFocus="this.select()">
+        <input class="btn btn-info submit" type="submit" name="submit" value="Create Survey">
+      <!-- </fieldset> -->
+    </form>
+
+    <form id="change-password">
+            <input class="form-control" type="password" name="passwords[old]" placeholder="Old Password" onFocus="this.select()">
+            <input class="form-control" type="password" name="passwords[new]" placeholder="New Password" onFocus="this.select()">
+            <input class="btn btn-info submit" type="submit" name="submit" value="Change password!">
+    </form>
+</div>
+  <!-- This is where handlebars inserts -->
+
+  <h4 class="alert"></h4>
+
+  <div id="content"></div>
+  <form id="create-question">
+    <fieldset>
+      <input class="form-control" type="text" name="prompt" placeholder="Enter question">
+      <input class="btn btn-info submit" type="submit" name="submit" value="Create Question">
+    </fieldset>
+  </form>
+
+  <div id="handlebar-target"></div>
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
