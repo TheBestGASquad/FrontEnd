@@ -36,7 +36,7 @@ const signInSuccess = (data) => {
   $('form#sign-up').hide()
   $('form#sign-in').hide()
   $('a.dropdown-toggle').css('visibility', 'visible')
-  $('#indexOfSurveys').show()
+  $('#indexOfSurveys').hide()
   $('#indexOfUserSurveys').show()
   $('#create-survey-nav').show()
   $('#handlebar-target').html('')
