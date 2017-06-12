@@ -11,16 +11,16 @@
 {{#each questions as |question|}}
       <tr>
         <td class="prompt-title">{{question.prompt}}</td>
-        <!-- <td>{{question.id}}</td>
-        <td><button questionId="{{question.id}}" type="click" class="btn btn-danger delete-question-button">Delete</button></td> -->
+        <!-- <td>{{question.id}}</td> -->
+        <!-- <td><button questionId="{{question.id}}" type="click" class="btn btn-danger delete-question-button">Delete</button></td>
         <td><button questionId="{{question.id}}" type="click" class="btn btn-danger get-data">Get answer data from this question</button></td>
-        <!-- <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger view-questions-button">View Questions</button></td>
+        <td><button surveyId="{{survey.id}}" type="click" class="btn btn-danger view-questions-button">View Questions</button></td>
         <td><button userId="{{user.id}}" type="click" class="btn btn-danger delete-auth-survey-button">Delete Question</button></td>
         <td><form class="update-survey-by-id-form" userId="{{user.id}}">
             <input type="text" id="update-auth-survey-by-id-button" name="survey[title]">
-            <input type="hidden" name="id" value="{{user.id}}">
+            <input type="hidden" name="id" value="{{user.id}}"> -->
         <button userId="{{user.id}}" type="submit" task="text" class="btn btn-info update-survey-button">Edit Question</button>
-      </form> -->
+      </form>
       </tr>
   {{/each}}
 </table>
