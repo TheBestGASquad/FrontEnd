@@ -44,6 +44,7 @@ const createSurveyFailure = (error) => {
 const createQuestionSuccess = (response) => {
   $('.alert').text('You Have Added The Question "' + response.question.prompt + '" to This Survey')
   setTimeout(function () { $('.alert').text('') }, 4000)
+  setTimeout(function () { $('.alert').text('') }, 4000)
   const showQuestionHtml = showQuestionHB({ questions: response })
   $('#content').append(showQuestionHtml)
   resetSurveyFormFields()
