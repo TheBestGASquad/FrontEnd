@@ -5,14 +5,14 @@
         <td class="prompt-title create">{{question.prompt}}</td>
         <td><button questionId="{{question.id}}" type="click" class="btn btn-danger delete-question-button">Delete</button></td>
 
-        <!-- <td>
+        <td>
           <form class="edit-question" questionId="{{question.id}}">
           <fieldset>
             <input type="text" name="question[prompt]" prompt="{{question.prompt}}" placeholder="Edit Prompt">
         <input type="submit" class="btn btn-info" name="submit" value="Update Question">
       </fieldset>
       </form>
-      </tr> -->
+      </tr>
 
 {{/each}}
 </table>
