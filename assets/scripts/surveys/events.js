@@ -62,6 +62,7 @@ const onUpdate = function (event) {
 }
 
 const onRevealAddQuestion = function (event) {
+  $('form#change-password').hide()
   $('form#create-survey').toggle()
   $('#handlebar-target').text('')
 }
@@ -134,6 +135,7 @@ const onAddQuestion = function (event) {
   // data = data.questions
   // console.log('on add question function fired this is surveyId', surveyId)
   // console.log('on add question this is data', data)
+
   api.addQuestion(surveyId, data)
     .then(ui.addQuestionSucess)
     .catch(ui.addQuestionFailure)

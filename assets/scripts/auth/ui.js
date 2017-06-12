@@ -3,15 +3,6 @@ const store = require('../store.js')
 // const api = require('./api.js')
 // const getFormFields = require(`../../../lib/get-form-fields`)
 
-// const resetFormFields = () => {
-//   document.getElementById('sign-up').value = ""
-//   document.getElementById('sign-in').value = ""
-//   document.getElementById('sign-out').value = ""
-//   document.getElementById('change-password').value = ""
-//   document.getElementById('create-survey').value = ""
-//   document.getElementById('create-question').value = ""
-// }
-
 const resetFormFields = () => {
   $('form#sign-up').trigger('reset')
   $('form#sign-in').trigger('reset')
@@ -101,6 +92,7 @@ const signOutFailure = (data) => {
 
 const changePasswordSuccess = (data) => {
   $('.alert').text('Password Changed')
+  $('#content').hide()
   setTimeout(function () {
     $('.alert').text('')
   }, 4000)
