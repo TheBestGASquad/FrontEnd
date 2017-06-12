@@ -193,22 +193,22 @@ const showUserSurveyTaken = (surveyId, data) => {
   })
 }
 
-// const editQuestion = (questionId, data) => {
-//   console.log('api.js edit one question function fired this is questionId', questionId)
-//   console.log('edit question data', data)
-//   return $.ajax({
-//     url: config.apiOrigin + '/edit-questions/' + questionId,
-//     method: 'PATCH',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     },
-//     data: {
-//       'question': {
-//         'prompt': data
-//       }
-//     }
-//   })
-// }
+const editQuestion = (questionId, data) => {
+  console.log('api.js edit one question function fired this is questionId', questionId)
+  console.log('edit question data', data)
+  return $.ajax({
+    url: config.apiOrigin + '/edit-questions/' + questionId,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'question': {
+        'prompt': data
+      }
+    }
+  })
+}
 
 const addQuestion = (surveyId, data) => {
   console.log(data.question.prompt)
