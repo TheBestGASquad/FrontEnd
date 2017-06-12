@@ -163,17 +163,20 @@ const editQuestion = (questionId, data) => {
 }
 
 const addQuestion = (surveyId, data) => {
-  console.log('add question function this is surveyId', surveyId)
-  console.log('add question function this is data', data)
+  console.log(data.question.prompt)
   return $.ajax({
-    url: config.apiOrigin + '/questions/' + surveyId,
+    url: config.apiOrigin + '/questions/',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: {
+      'question': {
+        'prompt': data.question.prompt,
+        '_survey': surveyId
+      }
+    }
   })
-}
 
 
 const showUserSurveyTaken = (surveyId, data) => {
