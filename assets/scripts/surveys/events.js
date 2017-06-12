@@ -129,13 +129,19 @@ const onEditQuestion = function (event) {
 const onAddQuestion = function (event) {
   event.preventDefault(event)
   // const userId = $(this).attr('userId')
-  // api.showAuthUserSurveys(data)
+  api.showAuthUserSurveys(data)
   const surveyId = $(this).attr('surveyId')
+<<<<<<< HEAD
   let data = getFormFields(event.target)
   // data = data.questions
   // console.log('on add question function fired this is surveyId', surveyId)
   // console.log('on add question this is data', data)
 
+=======
+  const data = getFormFields(event.target)
+  console.log('on add question function fired this is surveyId', surveyId)
+  console.log('on add question this is data', data)
+>>>>>>> parent of eb9226e...  add question function working
   api.addQuestion(surveyId, data)
     .then(ui.addQuestionSucess)
     .catch(ui.addQuestionFailure)
