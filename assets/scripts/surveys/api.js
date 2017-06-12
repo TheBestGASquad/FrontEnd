@@ -162,22 +162,18 @@ const editQuestion = (questionId, data) => {
   })
 }
 
-const addQuestion = (surveyId, data) => {
-  const addQuestion = (surveyId, data) => {
-  console.log(data.question.prompt)
-  return $.ajax({
-    url: config.apiOrigin + '/questions/',
-    method: 'POST',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data: {
-      'question': {
-        'prompt': data.question.prompt,
-        '_survey': surveyId
-      }
-    }
-  })
+const onAddQuestion = function (event) {
+  event.preventDefault(event)
+  // const userId = $(this).attr('userId')
+  // api.showAuthUserSurveys(data)
+  const surveyId = $(this).attr('surveyId')
+  let data = getFormFields(event.target)
+  // data = data.questions
+  // console.log('on add question function fired this is surveyId', surveyId)
+  // console.log('on add question this is data', data)
+  api.addQuestion(surveyId, data)
+    .then(ui.addQuestionSucess)
+    .catch(ui.addQuestionFailure)
 }
 
 const showUserSurveyTaken = (surveyId, data) => {
